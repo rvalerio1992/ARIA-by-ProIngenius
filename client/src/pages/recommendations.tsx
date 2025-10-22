@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Target } from "lucide-react";
+import { Target, Sparkles } from "lucide-react";
 
 export default function Recommendations() {
   const { toast } = useToast();
@@ -91,12 +92,22 @@ export default function Recommendations() {
   return (
     <div className="space-y-6">
       <div>
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="h-5 w-5 text-accent animate-pulse" />
+          <Badge variant="outline" className="gap-1">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            ARIA analizando · {recommendations.length} oportunidades detectadas
+          </Badge>
+        </div>
         <h1 className="text-3xl font-semibold flex items-center gap-2">
           <Target className="h-8 w-8" />
-          Recomendaciones NBA+
+          NBA+ Inteligente
         </h1>
         <p className="text-muted-foreground">
-          {recommendations.length} acciones priorizadas por impacto (P×V−R)
+          Acciones priorizadas por algoritmo (Probabilidad × Valor − Riesgo)
         </p>
       </div>
 

@@ -1,7 +1,7 @@
 import { CopilotPanel } from "@/components/copilot-panel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, FileText, MessageSquare, Shield } from "lucide-react";
+import { Lightbulb, FileText, MessageSquare, Shield, Sparkles } from "lucide-react";
 
 export default function Copilot() {
   // TODO: Remove mock data
@@ -31,9 +31,19 @@ export default function Copilot() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold">Copiloto IA Premium</h1>
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="h-6 w-6 text-accent animate-pulse" />
+          <Badge variant="outline" className="gap-1">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            ARIA Copiloto · Listo para asistir
+          </Badge>
+        </div>
+        <h1 className="text-3xl font-semibold">ARIA Copiloto Inteligente</h1>
         <p className="text-muted-foreground">
-          Asistente conversacional entrenado con políticas, productos y procedimientos internos
+          Tu agente autónomo entrenado con políticas, productos y conocimiento del banco
         </p>
       </div>
 

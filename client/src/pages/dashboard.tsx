@@ -3,7 +3,8 @@ import { ClientProfileCard } from "@/components/client-profile-card";
 import { RecommendationCard } from "@/components/recommendation-card";
 import { ActivityTimeline } from "@/components/activity-timeline";
 import { PortfolioHealthWidget } from "@/components/portfolio-health-widget";
-import { DollarSign, Users, TrendingUp, Target } from "lucide-react";
+import { DollarSign, Users, TrendingUp, Target, Sparkles } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 
 // TODO: Remove mock data
@@ -105,9 +106,19 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold">Dashboard Premium</h1>
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="h-6 w-6 text-accent animate-pulse" />
+          <Badge variant="outline" className="gap-1">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            ARIA activo · Analizando 127 clientes
+          </Badge>
+        </div>
+        <h1 className="text-3xl font-semibold">Dashboard Ejecutivo</h1>
         <p className="text-muted-foreground">
-          Bienvenida, María. Aquí está tu resumen ejecutivo.
+          Bienvenida, María. ARIA ha preparado tu resumen inteligente.
         </p>
       </div>
 

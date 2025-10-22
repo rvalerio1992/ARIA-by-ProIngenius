@@ -23,7 +23,7 @@ export function CopilotPanel({ className }: CopilotPanelProps) {
     {
       id: "1",
       role: "assistant",
-      content: "¡Hola! Soy tu asistente bancario Premium. Puedo ayudarte con políticas, productos, procedimientos y generar guiones para tus clientes. ¿En qué puedo ayudarte hoy?",
+      content: "¡Hola María! Soy ARIA, tu Agente de Relación Inteligente Autónoma. Estoy entrenada con todo el conocimiento del banco: políticas, productos, procedimientos y mejores prácticas. Puedo generar guiones de venta, redactar emails, responder sobre normativas y sugerir estrategias. ¿Cómo puedo asistirte hoy?",
       timestamp: "10:30",
     },
   ]);
@@ -57,15 +57,21 @@ export function CopilotPanel({ className }: CopilotPanelProps) {
 
   return (
     <Card className={cn("flex flex-col h-[600px]", className)}>
-      <CardHeader className="border-b">
+      <CardHeader className="border-b bg-gradient-to-r from-accent/10 to-transparent">
         <CardTitle className="text-lg flex items-center gap-2">
-          <Bot className="h-5 w-5" />
-          Copiloto IA
+          <Sparkles className="h-5 w-5 text-accent animate-pulse" />
+          ARIA Copiloto
           <Badge variant="outline" className="ml-auto gap-1">
-            <Sparkles className="h-3 w-3" />
-            Premium
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            En línea
           </Badge>
         </CardTitle>
+        <p className="text-xs text-muted-foreground mt-1">
+          IA Generativa · Entrenada con conocimiento bancario completo
+        </p>
       </CardHeader>
       <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
@@ -101,28 +107,34 @@ export function CopilotPanel({ className }: CopilotPanelProps) {
         ))}
       </CardContent>
       <CardFooter className="border-t p-4">
-        <div className="flex gap-2 w-full">
-          <Textarea
-            placeholder="Pregunta sobre políticas, productos o solicita un guión..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleSend();
-              }
-            }}
-            className="min-h-[60px] resize-none"
-            data-testid="input-copilot-message"
-          />
-          <Button
-            onClick={handleSend}
-            size="icon"
-            className="h-[60px] w-[60px]"
-            data-testid="button-send-message"
-          >
-            <Send className="h-5 w-5" />
-          </Button>
+        <div className="space-y-2 w-full">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <Sparkles className="h-3 w-3 text-accent" />
+            <span>ARIA puede citar políticas, generar contenido y responder consultas</span>
+          </div>
+          <div className="flex gap-2 w-full">
+            <Textarea
+              placeholder="Ej: Genera un guión para ofrecer fondos ESG a un cliente conservador..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSend();
+                }
+              }}
+              className="min-h-[60px] resize-none"
+              data-testid="input-copilot-message"
+            />
+            <Button
+              onClick={handleSend}
+              size="icon"
+              className="h-[60px] w-[60px]"
+              data-testid="button-send-message"
+            >
+              <Send className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </CardFooter>
     </Card>

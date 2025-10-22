@@ -21,7 +21,10 @@ import avatar3 from "@assets/generated_images/Senior_male_executive_headshot_165
 import avatar4 from "@assets/generated_images/Middle_Eastern_female_executive_headshot_8a359cfc.png";
 import avatar5 from "@assets/generated_images/African_male_executive_headshot_f9ecf3cf.png";
 
+import { useLocation } from "wouter";
+
 export default function Portfolio() {
+  const [, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterSegment, setFilterSegment] = useState("all");
 
@@ -90,12 +93,16 @@ export default function Portfolio() {
     return matchesSearch && matchesSegment;
   });
 
+  const handleClientClick = (clientId: string) => {
+    setLocation(`/enfoque/${clientId}`);
+  };
+
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold">Cartera Premium</h1>
+        <h1 className="text-3xl font-semibold">Enfoque 1:1 · Vista Premium</h1>
         <p className="text-muted-foreground">
-          Gestiona tu libro de {clients.length} clientes premium
+          {clients.length} clientes en tu libro · Vista consolidada con prep inteligente
         </p>
       </div>
 
@@ -143,7 +150,7 @@ export default function Portfolio() {
               <div
                 key={client.id}
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-md border hover-elevate active-elevate-2 cursor-pointer"
-                onClick={() => console.log("Client clicked:", client.id)}
+                onClick={() => handleClientClick(client.id)}
                 data-testid={`client-row-${client.id}`}
               >
                 <Avatar className="h-12 w-12">

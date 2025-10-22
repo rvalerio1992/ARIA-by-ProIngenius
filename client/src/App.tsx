@@ -10,6 +10,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/dashboard";
 import Portfolio from "@/pages/portfolio";
+import ClientDetail from "@/pages/client-detail";
 import Recommendations from "@/pages/recommendations";
 import Copilot from "@/pages/copilot";
 import Analytics from "@/pages/analytics";
@@ -20,7 +21,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
-      <Route path="/portfolio" component={Portfolio} />
+      <Route path="/enfoque" component={Portfolio} />
+      <Route path="/enfoque/:id" component={ClientDetail} />
       <Route path="/recommendations" component={Recommendations} />
       <Route path="/copilot" component={Copilot} />
       <Route path="/analytics" component={Analytics} />

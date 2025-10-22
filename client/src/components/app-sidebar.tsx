@@ -7,6 +7,7 @@ import {
   BarChart3,
   FileText,
   Bell,
+  Sparkles,
 } from "lucide-react";
 import {
   Sidebar,
@@ -21,6 +22,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Link, useLocation } from "wouter";
+import { Badge } from "@/components/ui/badge";
 
 const menuItems = [
   {
@@ -29,19 +31,22 @@ const menuItems = [
     icon: LayoutDashboard,
   },
   {
-    title: "Cartera Premium",
-    url: "/portfolio",
+    title: "Enfoque 1:1",
+    url: "/enfoque",
     icon: Users,
+    badge: "Premium",
   },
   {
-    title: "Recomendaciones",
+    title: "NBA+ Inteligente",
     url: "/recommendations",
     icon: Target,
+    aiPowered: true,
   },
   {
-    title: "Copiloto IA",
+    title: "ARIA Copiloto",
     url: "/copilot",
     icon: Bot,
+    aiPowered: true,
   },
   {
     title: "Análisis",
@@ -62,12 +67,15 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="border-b p-4">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
-            <BarChart3 className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-accent">
+            <Sparkles className="h-5 w-5 text-accent-foreground" />
           </div>
           <div>
-            <p className="text-sm font-semibold">Premium CRM</p>
-            <p className="text-xs text-muted-foreground">Banking Platform</p>
+            <div className="text-sm font-semibold flex items-center gap-1">
+              ARIA
+              <Badge variant="secondary" className="text-[10px] px-1 py-0">IA</Badge>
+            </div>
+            <p className="text-xs text-muted-foreground">Agente Premium Autónomo</p>
           </div>
         </div>
       </SidebarHeader>
@@ -81,7 +89,17 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild isActive={location === item.url}>
                     <Link href={item.url} data-testid={`link-${item.url.slice(1) || "dashboard"}`}>
                       <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
+                      <span className="flex items-center gap-2">
+                        {item.title}
+                        {item.aiPowered && (
+                          <Sparkles className="h-3 w-3 text-accent" />
+                        )}
+                        {item.badge && (
+                          <Badge variant="outline" className="text-[10px] px-1 py-0">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -115,9 +133,13 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="border-t p-4">
-        <div className="text-xs text-muted-foreground">
-          <p>Ejecutivo Premium</p>
+        <div className="text-xs">
+          <p className="text-muted-foreground">Ejecutivo Premium</p>
           <p className="font-medium text-foreground">María González</p>
+          <div className="flex items-center gap-1 mt-2 text-accent">
+            <Sparkles className="h-3 w-3" />
+            <span className="text-[10px]">ARIA activo · Aprendiendo</span>
+          </div>
         </div>
       </SidebarFooter>
     </Sidebar>
