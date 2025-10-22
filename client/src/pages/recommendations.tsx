@@ -107,7 +107,7 @@ export default function Recommendations() {
           Enfoque Campaña
         </h1>
         <p className="text-muted-foreground">
-          Next Best Action · Acciones priorizadas por algoritmo (P×V−R)
+          Next Best Action · Acciones priorizadas por ARIA
         </p>
       </div>
 
