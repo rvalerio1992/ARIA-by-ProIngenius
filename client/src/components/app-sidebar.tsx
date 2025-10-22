@@ -4,7 +4,6 @@ import {
   Target,
   Bot,
   Settings,
-  BarChart3,
   FileText,
   Bell,
   Sparkles,
@@ -50,12 +49,6 @@ const menuItems = [
     url: "/copilot",
     icon: Bot,
     aiPowered: true,
-  },
-  {
-    title: "Análisis",
-    subtitle: "Portafolio Management",
-    url: "/analytics",
-    icon: BarChart3,
   },
   {
     title: "Reportes",

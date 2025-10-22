@@ -13,7 +13,6 @@ import Portfolio from "@/pages/portfolio";
 import ClientDetail from "@/pages/client-detail";
 import Recommendations from "@/pages/recommendations";
 import Copilot from "@/pages/copilot";
-import Analytics from "@/pages/analytics";
 import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
 
@@ -25,7 +24,6 @@ function Router() {
       <Route path="/enfoque/:id" component={ClientDetail} />
       <Route path="/recommendations" component={Recommendations} />
       <Route path="/copilot" component={Copilot} />
-      <Route path="/analytics" component={Analytics} />
       <Route path="/reports" component={Reports} />
       <Route path="/settings" component={Settings} />
       <Route component={NotFound} />
