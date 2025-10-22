@@ -119,7 +119,7 @@ export default function ClientDetail() {
             <Sparkles className="h-5 w-5 text-accent" />
             <span className="text-sm font-medium text-accent">ARIA generando brief inteligente...</span>
           </div>
-          <h1 className="text-3xl font-semibold">Gemelo 1:1 Premium · Vista 360°</h1>
+          <h1 className="text-3xl font-semibold">Vista 360°</h1>
           <p className="text-muted-foreground">
             Preparación completa para tu próximo contacto
           </p>
