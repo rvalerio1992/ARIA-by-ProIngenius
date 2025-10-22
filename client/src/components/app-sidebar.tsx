@@ -26,20 +26,17 @@ import { Badge } from "@/components/ui/badge";
 const menuItems = [
   {
     title: "Dashboard",
-    subtitle: "Visión Global de Cartera",
     url: "/",
     icon: LayoutDashboard,
   },
   {
     title: "Enfoque 1:1",
-    subtitle: "Hiperpersonalizado",
     url: "/enfoque",
     icon: Users,
     badge: "Premium",
   },
   {
     title: "Enfoque Campaña",
-    subtitle: "Next Best Action",
     url: "/recommendations",
     icon: Target,
     aiPowered: true,
@@ -52,7 +49,6 @@ const menuItems = [
   },
   {
     title: "Reportes",
-    subtitle: "Generados con IA",
     url: "/reports",
     icon: FileText,
     aiPowered: true,
@@ -88,20 +84,15 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild isActive={location === item.url}>
                     <Link href={item.url} data-testid={`link-${item.url.slice(1) || "dashboard"}`}>
                       <item.icon className="h-4 w-4" />
-                      <span className="flex flex-col flex-1 min-w-0">
-                        <span className="flex items-center gap-2">
-                          {item.title}
-                          {item.aiPowered && (
-                            <Sparkles className="h-3 w-3 text-accent" />
-                          )}
-                          {item.badge && (
-                            <Badge variant="outline" className="text-[10px] px-1 py-0">
-                              {item.badge}
-                            </Badge>
-                          )}
-                        </span>
-                        {item.subtitle && (
-                          <span className="text-[10px] text-muted-foreground">{item.subtitle}</span>
+                      <span className="flex items-center gap-2">
+                        {item.title}
+                        {item.aiPowered && (
+                          <Sparkles className="h-3 w-3 text-accent" />
+                        )}
+                        {item.badge && (
+                          <Badge variant="outline" className="text-[10px] px-1 py-0">
+                            {item.badge}
+                          </Badge>
                         )}
                       </span>
                     </Link>
