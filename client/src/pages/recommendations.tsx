@@ -104,10 +104,10 @@ export default function Recommendations() {
         </div>
         <h1 className="text-3xl font-semibold flex items-center gap-2">
           <Target className="h-8 w-8" />
-          NBA+ Inteligente
+          Enfoque Campaña
         </h1>
         <p className="text-muted-foreground">
-          Acciones priorizadas por algoritmo (Probabilidad × Valor − Riesgo)
+          Next Best Action · Acciones priorizadas por algoritmo (P×V−R)
         </p>
       </div>
 

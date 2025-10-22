@@ -100,9 +100,9 @@ export default function Portfolio() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold">Enfoque 1:1 · Vista Premium</h1>
+        <h1 className="text-3xl font-semibold">Enfoque 1:1</h1>
         <p className="text-muted-foreground">
-          {clients.length} clientes en tu libro · Vista consolidada con prep inteligente
+          Hiperpersonalizado · {clients.length} clientes con prep inteligente
         </p>
       </div>
 

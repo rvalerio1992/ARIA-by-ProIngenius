@@ -41,7 +41,7 @@ export default function Copilot() {
             ARIA Copiloto · Listo para asistir
           </Badge>
         </div>
-        <h1 className="text-3xl font-semibold">ARIA Copiloto Inteligente</h1>
+        <h1 className="text-3xl font-semibold">ARIA Responde</h1>
         <p className="text-muted-foreground">
           Tu agente autónomo entrenado con políticas, productos y conocimiento del banco
         </p>

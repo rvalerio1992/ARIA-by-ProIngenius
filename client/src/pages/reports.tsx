@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileText, Download, Calendar } from "lucide-react";
+import { FileText, Download, Calendar, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function Reports() {
@@ -39,9 +39,19 @@ export default function Reports() {
   return (
     <div className="space-y-6">
       <div>
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="h-5 w-5 text-accent animate-pulse" />
+          <Badge variant="outline" className="gap-1">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            ARIA genera reportes automáticos
+          </Badge>
+        </div>
         <h1 className="text-3xl font-semibold">Reportes</h1>
         <p className="text-muted-foreground">
-          Accede a reportes automáticos y documentación de cumplimiento
+          Generados con IA · Documentación automática y cumplimiento
         </p>
       </div>
 

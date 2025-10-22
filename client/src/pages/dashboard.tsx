@@ -116,9 +116,9 @@ export default function Dashboard() {
             ARIA activo · Analizando 127 clientes
           </Badge>
         </div>
-        <h1 className="text-3xl font-semibold">Dashboard Ejecutivo</h1>
+        <h1 className="text-3xl font-semibold">Dashboard</h1>
         <p className="text-muted-foreground">
-          Bienvenida, María. ARIA ha preparado tu resumen inteligente.
+          Visión Global de Cartera · ARIA ha preparado tu resumen inteligente
         </p>
       </div>
 
