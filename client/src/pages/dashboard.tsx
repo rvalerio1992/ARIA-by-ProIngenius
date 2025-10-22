@@ -124,21 +124,21 @@ export default function Dashboard() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="AUM Total"
+          title="Saldos Activos"
           value="$45.2M"
           trend={{ value: 12.5, direction: "up" }}
           icon={<DollarSign className="h-4 w-4" />}
         />
         <MetricCard
-          title="Clientes Premium"
-          value="127"
-          trend={{ value: 3.2, direction: "up" }}
-          icon={<Users className="h-4 w-4" />}
+          title="Saldos Pasivos"
+          value="$38.7M"
+          trend={{ value: 8.3, direction: "up" }}
+          icon={<DollarSign className="h-4 w-4" />}
         />
         <MetricCard
-          title="NPS Score"
-          value="8.4"
-          trend={{ value: 0.5, direction: "down" }}
+          title="Contribución Neta"
+          value="$6.5M"
+          trend={{ value: 4.2, direction: "up" }}
           icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
