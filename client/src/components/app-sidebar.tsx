@@ -81,7 +81,7 @@ export function AppSidebar() {
               ARIA
               <Badge variant="secondary" className="text-[10px] px-1 py-0">IA</Badge>
             </div>
-            <p className="text-xs text-muted-foreground">Agente Premium Autónomo</p>
+            <p className="text-xs text-foreground/80">Agente de Relación Inteligente Autónoma</p>
           </div>
         </div>
       </SidebarHeader>
