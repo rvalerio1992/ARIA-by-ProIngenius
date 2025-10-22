@@ -13,29 +13,29 @@
 
 ---
 
-## Color Palette
+## Color Palette - Promerica Banking Brand
 
-**Dark Mode (Primary):**
-- Background Base: 220 15% 8%
-- Surface Elevated: 220 14% 12%
-- Surface Interactive: 220 13% 16%
-- Border Subtle: 220 10% 22%
-- Border Interactive: 220 8% 32%
+**Light Mode (Primary):**
+- Background Base: 0 0% 96% (Light gray)
+- Surface Elevated: 0 0% 100% (White cards)
+- Sidebar: 163 95% 18% (Deep Promerica Green)
+- Border Subtle: 163 10% 85%
+- Border Interactive: 163 10% 80%
 
-**Light Mode:**
-- Background Base: 220 15% 98%
-- Surface Elevated: 220 10% 100%
-- Surface Interactive: 220 15% 96%
-- Border Subtle: 220 10% 88%
-- Border Interactive: 220 8% 78%
+**Dark Mode:**
+- Background Base: 163 60% 8% (Dark green-tinted)
+- Surface Elevated: 163 50% 12%
+- Sidebar: 163 95% 12% (Deep green)
+- Border Subtle: 163 30% 22%
+- Border Interactive: 163 20% 32%
 
 **Brand & Accent Colors:**
-- Primary (Trust Blue): 215 85% 52%
-- Primary Hover: 215 85% 48%
-- Success (Growth Green): 145 65% 45%
+- Primary (Promerica Green): 163 100% 21% (#006A4E - Deep forest green)
+- Accent (Lime Highlight): 88 64% 72% (#B8E986 - Fresh lime green)
+- Success: 163 100% 28% (Green variant)
 - Warning (Alert Amber): 38 92% 50%
 - Danger (Risk Red): 0 72% 51%
-- Premium Gold (Subtle): 45 80% 58%
+- Chart Palette: Green-based spectrum from deep to lime
 
 **Text Hierarchy:**
 - Text Primary (Dark): 220 10% 95%
