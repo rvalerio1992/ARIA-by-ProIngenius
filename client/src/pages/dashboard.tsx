@@ -1,8 +1,8 @@
 import { MetricCard } from "@/components/metric-card";
 import { ClientProfileCard } from "@/components/client-profile-card";
-import { RecommendationCard } from "@/components/recommendation-card";
 import { ActivityTimeline } from "@/components/activity-timeline";
 import { PortfolioHealthWidget } from "@/components/portfolio-health-widget";
+import { CampaignSummaryWidget } from "@/components/campaign-summary-widget";
 import { DollarSign, Users, TrendingUp, Target, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
@@ -30,18 +30,63 @@ export default function Dashboard() {
     phone: "+1 555 0123",
   };
 
-  // TODO: Remove mock data
-  const topRecommendation = {
-    id: "rec-1",
-    title: "Renovación Anticipada de Depósito a Plazo",
-    description: "Cliente tiene DP venciendo en 5 días. Proponer renovación con tasa preferencial 4.5% considerando su perfil de bajo riesgo y AUM superior a $2M.",
-    impactScore: 8.5,
-    probability: 85,
-    value: "$45,000",
-    risk: "Bajo",
-    category: "Retención",
-    priority: "alta" as const,
-  };
+  // TODO: Remove mock data - Campaign opportunities
+  const activeCampaigns = [
+    {
+      id: "camp-1",
+      title: "Renovación Anticipada DP Q1 2025",
+      portfolioPercentage: 18,
+      clientsAffected: 184,
+      totalValue: "$8.4M",
+      category: "Retención Masiva",
+      portfolioImpact: "alto" as const,
+    },
+    {
+      id: "camp-2",
+      title: "Campaña ESG - Inversión Sostenible",
+      portfolioPercentage: 11,
+      clientsAffected: 112,
+      totalValue: "$5.8M",
+      category: "Cross-sell",
+      portfolioImpact: "medio" as const,
+    },
+    {
+      id: "camp-3",
+      title: "Refresh KYC Preventivo",
+      portfolioPercentage: 15,
+      clientsAffected: 156,
+      totalValue: "N/A",
+      category: "Cumplimiento Preventivo",
+      portfolioImpact: "alto" as const,
+    },
+    {
+      id: "camp-4",
+      title: "TC Cashback - Alto Gasto Comercios",
+      portfolioPercentage: 9,
+      clientsAffected: 92,
+      totalValue: "$2.1M",
+      category: "Cross-sell",
+      portfolioImpact: "medio" as const,
+    },
+    {
+      id: "camp-5",
+      title: "Planificación Fiscal Premium",
+      portfolioPercentage: 7,
+      clientsAffected: 67,
+      totalValue: "$1.8M",
+      category: "Cross-sell",
+      portfolioImpact: "medio" as const,
+    },
+    {
+      id: "camp-6",
+      title: "Retención - Riesgo Churn Detectado",
+      portfolioPercentage: 5,
+      clientsAffected: 48,
+      totalValue: "$3.2M",
+      category: "Retención",
+      portfolioImpact: "bajo" as const,
+    },
+  ];
 
   // TODO: Remove mock data
   const recentActivity = [
@@ -78,22 +123,6 @@ export default function Dashboard() {
     { label: "Requieren Seguimiento", value: 12, total: 127, status: "warning" as const },
     { label: "En Riesgo Alto", value: 3, total: 127, status: "critical" as const },
   ];
-
-  const handleAcceptRecommendation = (id: string) => {
-    console.log("Recommendation accepted:", id);
-    toast({
-      title: "Acción Iniciada",
-      description: "Se ha programado la acción recomendada para este cliente.",
-    });
-  };
-
-  const handleDismissRecommendation = (id: string) => {
-    console.log("Recommendation dismissed:", id);
-    toast({
-      title: "Acción Descartada",
-      description: "La recomendación ha sido eliminada de tu lista.",
-    });
-  };
 
   const handleContact = (type: "email" | "phone") => {
     console.log("Contact via:", type);
@@ -150,14 +179,7 @@ export default function Dashboard() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Acción Prioritaria</h2>
-            <RecommendationCard
-              recommendation={topRecommendation}
-              onAccept={handleAcceptRecommendation}
-              onDismiss={handleDismissRecommendation}
-            />
-          </div>
+          <CampaignSummaryWidget campaigns={activeCampaigns} />
 
           <div>
             <h2 className="text-xl font-semibold mb-4">Cliente Destacado</h2>

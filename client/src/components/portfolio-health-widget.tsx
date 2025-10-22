@@ -119,20 +119,6 @@ export function PortfolioHealthWidget({ metrics, className }: PortfolioHealthWid
           </div>
         </CardContent>
       </Card>
-
-      <Card className="border-accent/20 bg-gradient-to-br from-accent/5 to-transparent">
-        <CardContent className="pt-4 pb-4">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2 min-w-0">
-              <Sparkles className="h-4 w-4 text-accent flex-shrink-0" />
-              <span className="text-sm font-medium">Top 5 oportunidades</span>
-            </div>
-            <Button size="sm" className="gap-1 flex-shrink-0" data-testid="button-ask-aria-widget">
-              Preguntar a ARIA
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
