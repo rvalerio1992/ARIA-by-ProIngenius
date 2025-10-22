@@ -1,110 +1,144 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MetricCard } from "@/components/metric-card";
-import { BarChart3, TrendingUp, Users, DollarSign, Target, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Activity, TrendingUp, TrendingDown, AlertTriangle, Users, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Analytics() {
+  // TODO: Remove mock data - Portfolio health metrics
+  const portfolioHealth = 85; // 0-100
+  const balanceChange = 12.5; // percentage
+  const balanceDirection = "up" as const;
+  const highRiskClients = 3;
+  const contactedPercentage = 78; // percentage
+
+  // Health color thresholds: Green ≥80, Yellow 60-79, Red <60
+  const getHealthColor = (health: number) => {
+    if (health >= 80) return "text-green-600";
+    if (health >= 60) return "text-yellow-600";
+    return "text-red-600";
+  };
+
+  const getHealthBgColor = (health: number) => {
+    if (health >= 80) return "bg-green-600/10";
+    if (health >= 60) return "bg-yellow-600/10";
+    return "bg-red-600/10";
+  };
+
+  // Contacted color thresholds: Green ≥75%, Yellow 60-74%, Red <60%
+  const getContactedColor = (percentage: number) => {
+    if (percentage >= 75) return "text-green-600";
+    if (percentage >= 60) return "text-yellow-600";
+    return "text-red-600";
+  };
+
+  const getContactedBgColor = (percentage: number) => {
+    if (percentage >= 75) return "bg-green-600/10";
+    if (percentage >= 60) return "bg-yellow-600/10";
+    return "bg-red-600/10";
+  };
+
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-semibold">Análisis</h1>
         <p className="text-muted-foreground">
-          Portafolio Management · Insights detallados de tu cartera Premium
+          Portafolio Management · Métricas ejecutivas de tu cartera
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <MetricCard
-          title="Crecimiento AUM (YTD)"
-          value="+18.3%"
-          trend={{ value: 5.2, direction: "up" }}
-          icon={<TrendingUp className="h-4 w-4" />}
-        />
-        <MetricCard
-          title="Net New Money"
-          value="$8.4M"
-          trend={{ value: 12.1, direction: "up" }}
-          icon={<DollarSign className="h-4 w-4" />}
-        />
-        <MetricCard
-          title="Tasa de Conversión"
-          value="68%"
-          trend={{ value: 3.5, direction: "up" }}
-          icon={<Target className="h-4 w-4" />}
-        />
-        <MetricCard
-          title="Interacciones/Cliente"
-          value="12.4"
-          trend={{ value: 1.2, direction: "up" }}
-          icon={<Users className="h-4 w-4" />}
-        />
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <BarChart3 className="h-5 w-5" />
-              Distribución por Segmento
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+              <Activity className="h-4 w-4" />
+              Salud
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>Ultra Premium</span>
-                <span className="font-mono font-semibold">$28.5M (63%)</span>
-              </div>
-              <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-chart-1" style={{ width: "63%" }} />
-              </div>
+          <CardContent>
+            <div className={cn("text-3xl font-mono font-bold mb-1", getHealthColor(portfolioHealth))}>
+              {portfolioHealth}
             </div>
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>Premium</span>
-                <span className="font-mono font-semibold">$16.7M (37%)</span>
-              </div>
-              <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-chart-2" style={{ width: "37%" }} />
-              </div>
-            </div>
+            <Badge variant="secondary" className={cn("text-xs", getHealthBgColor(portfolioHealth))}>
+              {portfolioHealth >= 80 ? "Excelente" : portfolioHealth >= 60 ? "Aceptable" : "Crítico"}
+            </Badge>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Target className="h-5 w-5" />
-              Distribución por Industria
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+              {balanceDirection === "up" ? (
+                <TrendingUp className="h-4 w-4" />
+              ) : (
+                <TrendingDown className="h-4 w-4" />
+              )}
+              Δ Saldo 30d
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
-            {[
-              { name: "Tecnología", value: 32, color: "bg-chart-1" },
-              { name: "Inmobiliario", value: 24, color: "bg-chart-2" },
-              { name: "Manufactura", value: 18, color: "bg-chart-3" },
-              { name: "Retail", value: 15, color: "bg-chart-4" },
-              { name: "Otros", value: 11, color: "bg-chart-5" },
-            ].map((industry) => (
-              <div key={industry.name} className="flex items-center gap-3">
-                <div className={`h-3 w-3 rounded-full ${industry.color}`} />
-                <span className="text-sm flex-1">{industry.name}</span>
-                <span className="text-sm font-medium">{industry.value}%</span>
-              </div>
-            ))}
+          <CardContent>
+            <div className={cn("text-3xl font-mono font-bold mb-1", balanceDirection === "up" ? "text-green-600" : "text-red-600")}>
+              {balanceDirection === "up" ? "+" : ""}{balanceChange}%
+            </div>
+            <Badge variant="secondary" className={balanceDirection === "up" ? "bg-green-600/10" : "bg-red-600/10"}>
+              <span className="text-xs">vs mes anterior</span>
+            </Badge>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              Riesgo Alto
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-mono font-bold mb-1 text-red-600">
+              {highRiskClients}
+            </div>
+            <Badge variant="secondary" className="bg-red-600/10 text-xs">
+              clientes
+            </Badge>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              Contactados ≤30d
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className={cn("text-3xl font-mono font-bold mb-1", getContactedColor(contactedPercentage))}>
+              {contactedPercentage}%
+            </div>
+            <Badge variant="secondary" className={cn("text-xs", getContactedBgColor(contactedPercentage))}>
+              {contactedPercentage >= 75 ? "Óptimo" : contactedPercentage >= 60 ? "Mejorar" : "Urgente"}
+            </Badge>
           </CardContent>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            Tendencias Mensuales
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="text-sm text-muted-foreground text-center py-8">
-            Gráficos de tendencias disponibles próximamente
+      <Card className="border-accent/20 bg-gradient-to-br from-accent/5 to-transparent">
+        <CardContent className="pt-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-accent/10 flex-shrink-0">
+                <Sparkles className="h-5 w-5 text-accent" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-1">Top 5 oportunidades</h3>
+                <p className="text-sm text-muted-foreground">
+                  ARIA ha identificado las acciones de mayor impacto para tu cartera
+                </p>
+              </div>
+            </div>
+            <Button className="gap-2 flex-shrink-0" data-testid="button-ask-aria">
+              <Sparkles className="h-4 w-4" />
+              Preguntar a ARIA
+            </Button>
           </div>
         </CardContent>
       </Card>
