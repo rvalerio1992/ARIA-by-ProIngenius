@@ -83,25 +83,40 @@ async def root():
         "docs": "/docs"
     }
 
-@app.get("/health", response_model=HealthResponse)
+@app.get("/health")
 async def health():
     """
     Endpoint de salud del sistema
-    Retorna estado y cantidad de documentos indexados
+    Retorna estado de servicios disponibles
     """
     try:
-        rag = get_rag_service()
+        # Verificar API key (sin inicializar RAG aún)
+        api_key = os.getenv("AI_INTEGRATIONS_OPENAI_API_KEY", "")
+        has_valid_key = len(api_key) > 20  # API keys reales son >40 chars
+        
+        # Inicializar solo metrics (no requiere OpenAI)
         metrics = get_metrics_service()
         
-        stats = rag.get_stats()
+        # Verificar si RAG ya está inicializado
+        rag_status = "not_initialized"
+        vector_docs = 0
+        
+        if rag_service is not None:
+            stats = rag_service.get_stats()
+            rag_status = stats['status']
+            vector_docs = stats['total_documents']
+        elif has_valid_key:
+            rag_status = "ready_to_init"
+        else:
+            rag_status = "needs_api_key"
         
         return {
             "status": "ok",
-            "vector_docs": stats['total_documents'],
+            "vector_docs": vector_docs,
             "services": {
-                "rag": stats['status'],
                 "metrics": "ready",
-                "collection": stats['collection_name']
+                "rag": rag_status,
+                "openai_configured": has_valid_key
             }
         }
     except Exception as e:
