@@ -51,6 +51,15 @@ export default function Clients() {
   // Fetch clients
   const { data, isLoading, error } = useQuery<ClientsResponse>({
     queryKey: ['/api/clients', queryParams.toString()],
+    queryFn: async () => {
+      const response = await fetch(`/api/clients?${queryParams.toString()}`, {
+        credentials: 'include',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch clients');
+      }
+      return response.json();
+    },
   });
   
   // Filter by search term (client-side)

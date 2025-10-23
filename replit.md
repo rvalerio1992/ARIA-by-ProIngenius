@@ -137,11 +137,70 @@ Server available at http://0.0.0.0:8000 with interactive docs at /docs
 - Graceful degradation: metrics endpoints work without OpenAI key
 
 **Recent Changes (October 23, 2025)**:
+
+**Phase 1: RAG API Backend (Python/FastAPI)**
 - Implemented complete RAG API backend with FastAPI
 - Added ChromaDB vector store with OpenAI embeddings
 - Created metrics calculation service for portfolio analytics
 - Comprehensive testing suite validates all endpoints
 - README documentation with usage examples and deployment guide
+
+**Phase 2: Full Data Integration (Express + React)**
+- **Backend Express Enhancements**:
+  - `server/data-loader.ts`: Client data loading service with 926 profiles from row_cards.jsonl
+  - `server/ai-insights.ts`: GPT-4 powered 1:1 client analysis service with 4-section prompt (Snapshot Ejecutivo, Análisis de Comportamiento, Oportunidades Detectadas, Alertas y Riesgos)
+  - **New API Endpoints** in `server/routes.ts`:
+    - `GET /api/clients` - Paginated client list with filters (sector, age, income)
+    - `GET /api/clients/stats` - Aggregate statistics (total: 926, sector breakdown)
+    - `GET /api/clients/:id` - Individual client profile
+    - `GET /api/clients/:id/insights` - AI-generated 1:1 analysis using GPT-4
+    - `GET /api/metrics` - Portfolio metrics proxy with fallback
+    - `GET /api/metrics/saldo` - Saldo breakdown proxy
+    - `GET /api/rag/ask` - RAG conversational query proxy
+
+- **Frontend React Enhancements**:
+  - `pages/dashboard.tsx`: Real metrics display (₡42.2M captaciones, ₡10.9M colocaciones, ₡31.3M neto, 926 clients)
+  - `pages/clients.tsx`: Client portfolio list with pagination (24/page), sector filters, and search
+  - `pages/client-vista360.tsx`: Individual AI-powered Vista 360 with 4 analysis sections
+  - Navigation: Added "Cartera Clientes" to sidebar with 926 badge
+  - Routes: `/clients` (list) and `/clients/:id` (Vista 360) registered in App.tsx
+
+- **Data Flow Architecture**:
+  ```
+  row_cards.jsonl (926 clients)
+      ↓
+  data-loader.ts (Express, in-memory cache)
+      ↓
+  routes.ts (REST API endpoints)
+      ↓
+  TanStack Query (React, client-side state)
+      ↓
+  UI Components (Dashboard, Clients List, Vista 360)
+  ```
+
+- **AI Insights System**:
+  - Structured GPT-4 prompt generates JSON with 4 sections
+  - Includes sociodemographic, financial, and behavioral analysis
+  - Fallback: Returns profile data without AI when OpenAI unavailable
+  - Query fixed: Vista 360 now correctly calls `/api/clients/:id/insights` endpoint
+
+**Phase 3: Bug Fixes and E2E Testing**
+- **Critical Bug Fixes**:
+  - Fixed /api/metrics endpoint: Now returns 200 with fallback data instead of 500 when RAG API unavailable
+  - Fixed clients list query: Corrected URL construction to use query params (?page=1&limit=24)
+  - Fixed Vista 360 query: Added explicit queryFn to call correct insights endpoint
+  
+- **E2E Testing Results** (Playwright):
+  - ✅ Dashboard displays real metrics correctly
+  - ✅ Client list loads 24 cards with pagination
+  - ✅ Vista 360 shows AI-generated 4-section analysis
+  - ✅ Complete user journey validated: Dashboard → Clients → Vista 360
+  - ⚠️ GPT-4 insights take ~4 seconds (expected behavior)
+  
+- **Fallback System**:
+  - When RAG API Python (port 8000) is unavailable, Express backend serves hardcoded metrics
+  - All frontend features work with or without RAG API
+  - Graceful degradation ensures consistent UX
 
 ## External Dependencies
 
