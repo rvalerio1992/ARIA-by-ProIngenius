@@ -1,0 +1,3898 @@
+{
+  "table": "master_analytics_cartera_ejecutivo",
+  "version": "v0.1",
+  "keys": [
+    "COD_CLIENTE"
+  ],
+  "columns": [
+    {
+      "name": "ENROLL_FLAG",
+      "type": "int",
+      "category": "CANALES DIGITALES",
+      "description": "Indica si tiene usuario para ingresar a canales digitales",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "FEC_ENROLL",
+      "type": "date",
+      "category": "CANALES DIGITALES",
+      "description": "Fecha en que se le asignó usuario para canales digitales",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "RELEMPRESARIAL_FLAG",
+      "type": "int",
+      "category": "CANALES DIGITALES",
+      "description": "Indica si esta enrrolado para uso de aplicaciones empresariales",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "COD_CLIENTE",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Código único definido por el Banco que identifica a cada cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "ID",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Número de identificación Física/Jurídica del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "ID_CATEGORIA",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Tipo de identificación del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "NOMBRE",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Nombre completo del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "SEXO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Sexo del Cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "EDAD",
+      "type": "int",
+      "category": "DEMOGRAFICO",
+      "description": "Edad del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ESTADO_CIVIL",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Estado civil del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROFESION",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Profesión registrada por el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROFESION_CATEGORIA",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Categoría de la profesión del cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GRADO_ACADEMICO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Grado académico obtenido por el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "NIVEL_EDUCATIVO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Nivel educativo máximo obtenido por el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "NACIONALIDAD",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Nacionalidad del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "GENERACION",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Generación a la que pertenece el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "HIJOS",
+      "type": "int",
+      "category": "DEMOGRAFICO",
+      "description": "Cantidad de hijos que tiene el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "EDAD_HIJO_MENOR",
+      "type": "int",
+      "category": "DEMOGRAFICO",
+      "description": "Edad del hijo menor del cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "EDAD_PADRE_MAYOR",
+      "type": "int",
+      "category": "DEMOGRAFICO",
+      "description": "Edad del padre que tenga la mayor edad (Madre o padre) del cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ID_PATRONO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "ID del patrono para quien labora el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "NOM_PATRONO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Nombre del patrono donde labora el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SECTOR_PUBLICO_FLAG",
+      "type": "int",
+      "category": "DEMOGRAFICO",
+      "description": "Indica si el cliente labora para el sector público",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ANTIGUEDAD_LABORAL",
+      "type": "real",
+      "category": "DEMOGRAFICO",
+      "description": "Antigüedad laboral del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TIPO_CLIENTE",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Indica el tipo de cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CORREO_ELECTRONICO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Correo electrónico del cliente",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "TELEFONO",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Número telefónico del cliente",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "TIPO_PLAN",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Tipo de plan que posee el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "FEC_NACIMIENTO",
+      "type": "date",
+      "category": "DEMOGRAFICO",
+      "description": "Fecha de nacimiento o fecha de inscripción en caso de ser persona Jurídica",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "FUENTE_INGRESOS",
+      "type": "string",
+      "category": "DEMOGRAFICO",
+      "description": "Indica la fuente de ingresos",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GIE_NOM",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Grupo de Interés al que pertenece el cliente jurídico",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GRUPO_HUELLA_FLAG",
+      "type": "int",
+      "category": "EMPRESAS",
+      "description": "Indica si el cliente jurídico es una empresa del Grupo Huella",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "COD_REPRESENTANTE_LEGAL",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Código único que identifica al cliente que es representante legal del cliente jurídico",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEXO_REPRESENTANTE_LEGAL",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Sexo del representante legal del cliente jurídico",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ITE",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Indicador Tamaño Empresa",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "EMPLEADOS",
+      "type": "int",
+      "category": "EMPRESAS",
+      "description": "Cantidad de empleados de la empresa",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ACTIVIDAD_ECONOMICA",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Actividad económica que desempeña el cliente jurídico",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "SUBACTIVIDAD_ECONOMICA",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Subactividd económica que desempeña el cliente jurídico",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "TIPO_EMPRESA",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Clasificación de personas Jurídicas de acuerdo a su registro",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "REPRESENTANTE_LEGAL",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Nombre completo del representante legal de la empresa",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PLANILLA_REPORTADA",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Planilla total pagada por el cliente juridico.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ANTIGUEDAD_LABORAL_PROMEDIO",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Promedio de la antigüedad laboral de los colaboradores del cliente juridico.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ANTIGUEDAD_LABORAL_MEDIANA",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Mediana de la antigüedad laboral de los colaboradores del cliente jurídico.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PLANILLA_REPORTADA_PROMEDIO",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Promedio de planilla pagada al empleado del cliente jurídico.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PLANILLA_REPORTADA_MEDIANA",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Mediana de planilla pagada al empleado del cliente jurídico.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LUCRATIVA_FLAG",
+      "type": "int",
+      "category": "EMPRESAS",
+      "description": "Indica si la empresa es lucrativa",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ESTATAL_FLAG",
+      "type": "int",
+      "category": "EMPRESAS",
+      "description": "Indica si la empresa es estatal",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "DIRECCION_INTERNA",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Dirección donde se encuentra localizado el cliente jurídico",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "MONTO_ACTIVOS",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Monto de activos registrado del cliente",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "VENTAS_ANUAL",
+      "type": "real",
+      "category": "EMPRESAS",
+      "description": "Ventas anuales registradas del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_GIE_DESC",
+      "type": "string",
+      "category": "EMPRESAS",
+      "description": "Indica el detalle del  grupo de interes económico al que pertenece el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GAM_FLAG",
+      "type": "int",
+      "category": "GEOGRAFICO",
+      "description": "Indica si la persona jurídica se ubica en el Gran Área Metropolitana (GAM)",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAIS_DEFAULT",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "País de domicilio del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROVINCIA_DEFAULT",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Provincia de domicilio del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CANTON_DEFAULT",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Cantón de domicilio del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "DISTRITO_DEFAULT",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Distrito de domicilio del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROVINCIA_TRABAJO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Provincia de trabajo del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CANTON_TRABAJO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Cantón de trabajo del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "DISTRITO_TRABAJO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Distrito de trabajo del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROVINCIA_VOTO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Provincia donde vota el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CANTON_VOTO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Cantón donde vota el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "DISTRITO_VOTO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Distrito donde vota el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LATITUD_DOMICILIO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Latitud donde se ubica el domicilio",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LONGITUD_DOMICILIO",
+      "type": "string",
+      "category": "GEOGRAFICO",
+      "description": "Longitud donde se ubica el domicilio",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GES_TC_SERVICIOS",
+      "type": "int",
+      "category": "GESTIONES",
+      "description": "El cliente ha realizado gestiones de servicios de tarjetas de crédito",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GES_TC_INTENTO_CANCELACION",
+      "type": "real",
+      "category": "GESTIONES",
+      "description": "El cliente ha realizado gestiones de cancelación de tarjetas de crédito",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GES_TC_CANCELACION_EFECTIVA",
+      "type": "int",
+      "category": "GESTIONES",
+      "description": "Gestiones de cancelación realizadas por el cliente con resultado efectivo",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GES_TC_SALIDA_DEL_PAIS",
+      "type": "int",
+      "category": "GESTIONES",
+      "description": "Gestiones relacionadas a salidas del país",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "GES_TC_OTRAS",
+      "type": "int",
+      "category": "GESTIONES",
+      "description": "Otro tipo de gestiones de tarjeta de crédito",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GES_TC_MALESTAR",
+      "type": "int",
+      "category": "GESTIONES",
+      "description": "El cliente ha realizado gestiones de malestar de tarjetas de crédito",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROMOTOR_ACTIVO",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Promotor activo del cliente jurídico en caso de contar con crédito",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROMOTOR_ACTIVO_NOM",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Nombre del promotor en lo que respecta a productos activos",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GERENCIA",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Gerencia a la que pertenece el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "COD_PROMOTOR",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Código promotor asignado al cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "UNIDAD_NEGOCIO",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Unidad de Negocio a la que pertenece el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "AREA_FUNCIONAL",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Área funcional a la que pertenece el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PROMOTOR_PASIVO_NOM",
+      "type": "string",
+      "category": "NEGOCIO",
+      "description": "Nombre del promotor en lo que respecta a productos pasivos",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LABORA_GRUPO_HUELLA_FLAG",
+      "type": "int",
+      "category": "NEGOCIO",
+      "description": "Indica si el cliente labora para alguna empresa del Grupo Huella",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "COLABORADOR_FLAG",
+      "type": "int",
+      "category": "NEGOCIO",
+      "description": "Indica si el cliente es un colaborador de Banco Promerica",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "FEC_CORTE",
+      "type": "date",
+      "category": "OTROS",
+      "description": "Fecha de corte del Master",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_CTF_ENTRANTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias CTF entrantes",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_CTF_ENTRANTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias CTF entrante",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_CTF_ENTRANTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias CTF entrantes",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_CTF_SALIENTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias CTF salientes",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_CTF_SALIENTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias CTF saliente",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_CTF_SALIENTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias CTF salientes",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_INTERNACIONAL_ENTRANTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias Internacionales entrante",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_INTERNACIONAL_SALIENTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias Internacionales saliente",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGOS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realiza pagos",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TRANSFERENCIAS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realiza transferencias",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PRODUCTOS_ACTIVOS",
+      "type": "string",
+      "category": "PRODUCTO",
+      "description": "Lista de productos CORE que tiene activos el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PRODUCTOS_INACTIVOS",
+      "type": "string",
+      "category": "PRODUCTO",
+      "description": "Lista de productos CORE que tiene inactivos el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de cuentas de efectivo activas que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de certificados a plazo activos que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_PLAN_METAS_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de planes meta que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PRENDARIO_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de créditos prendarios activos que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_HIPOTECARIO_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de créditos hipotecarios activos que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_OTROS_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de otros créditos activos que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de tarjetas de crédito activos que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TD_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de tarjetas de débito activos que posee el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_MONTO_PROMEDIO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo promedio en dólares en Cuentas de Efectivo en los últimos 12 meses",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PRODUCTOS_CORE_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de productos CORE",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PRODUCTOS_CORE_Q_RANGO",
+      "type": "string",
+      "category": "PRODUCTO",
+      "description": "Rango de productos CORE",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SALDO_PASIVOS",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares en Cuentas de Efectivo y Certificados a Plazo",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SALDO_ACTIVOS",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares en Tarjetas de Crédito y Créditos",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ADQ_FACTURACION_LY",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Facturación total en dólares realizada en adquirencia en el último año",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos una Cuenta de Efectivo",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Certificado a Plazo",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_PLAN_METAS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente tiene al menos un Plan Meta",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PRENDARIO_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito Prendario",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_HIPOTECARIO_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito Hipotecario",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_OTROS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el clientes posee al menos otro crédito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos una tarjeta de crédito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TD_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos una tarjeta de débito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MESA_CAMBIO_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente utiliza mesa de cambio",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGUROS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un seguro",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ADQ_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente tiene adquirencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Cuentas de Efectivo a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Certificados a Plazo a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_PLAN_METAS_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Plan Metas a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PRENDARIO_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de crédito Prendario a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_HIPOTECARIO_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo de crédito Hipotecario a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_OTROS_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de otros Créditos a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares en tarjetas de crédito a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TD_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de tarjetas de débito a la fecha de corte",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto de transacciones realizadas con Tarjeta de Crédito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TD_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto de transacciones realizadas con Tarjeta de Débito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MESA_CAMBIO_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto de transacciones realizadas con Mesa de Cambio",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ADQ_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto de transacciones realizadas en Adquirencia",
+      "tables": [
+        "Master Analytics",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MESA_CAMBIO_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones de Mesa de Cambio",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "RECIBE_PAGO_PLANILLA_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente recibe el pago de planilla con Banco Promerica",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CUENTA_PLANILLERA_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee una cuenta de efectivo planillera",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "VALET_PARKING_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente usa el servicio de Valet Parking",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LINEUP_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente pertenece a Lineup",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XF_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente tiene Extrafinanciamientos",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XF_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de extrafinanciamientos",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_PLANILLA_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente paga su planilla con Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_PLANILLA_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de los pagos en Planilla",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_PROVEEDORES_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó pago de Proveedores",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_PROVEEDORES_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones de Pago de Proveedores",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_PROVEEDORES_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto de transacciones de Pago de Proveedores",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_STC_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó pago de Servicios con Tarjeta de Crédito",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_STC_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de pagos de Servicios con Tarjeta de Crédito",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_STC_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto de transacciones de Pago de Servicios con Tarjeta de Crédito",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_SCE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó pago de Servicios con Cuenta de Efectivo",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_SCE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de pagos de Servicios con Cuenta de Efectivo",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PAGO_SCE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transacciones de Pago de Servicios con Cuenta de Efectivo",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_SINPE_ENTRANTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias SINPE entrantes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_SINPE_ENTRANTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias SINPE entrante",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_SINPE_ENTRANTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias SINPE entrantes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_SINPE_SALIENTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias SINPE salientes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_SINPE_SALIENTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias SINPE saliente",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_SINPE_SALIENTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias SINPE salientes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_DTR_ENTRANTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias DTR entrantes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_DTR_ENTRANTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de trasnferencias DTR entrante",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_DTR_ENTRANTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias DTR entrantes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_DTR_SALIENTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias DTR salientes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_DTR_SALIENTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transferencias DTR saliente",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_DTR_SALIENTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias DTR salientes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_INTERNACIONAL_ENTRANTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias Internacionales entrantes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_INTERNACIONAL_ENTRANTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias Internacionales entrantes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_INTERNACIONAL_SALIENTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente realizó transferencias Internacionales salientes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TR_INTERNACIONAL_SALIENTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto en dólares de transferencias Internacionales salientes",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_CORRIENTE_AHORRO_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos una Cuenta Corriente o de Ahorro.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_CORRIENTE_AHORRO_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Cuentas Corrientes o de Ahorro",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_CORRIENTE_AHORRO_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Cuentas Corrientes o de Ahorro.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_CORRIENTE_AHORRO_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Cuentas Corrientes o de Ahorro.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_ALTO_RENDIMIENTO_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos una Cuenta de Alto Rendimiento.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_ALTO_RENDIMIENTO_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Cuentas de Alto Rendimiento",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_ALTO_RENDIMIENTO_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Cuentas de Alto Rendimiento.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_ALTO_RENDIMIENTO_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Cuentas de Alto Rendimiento.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_DESMATERIALIZADOS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Certificado de Inversión Desmaterializado.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_DESMATERIALIZADOS_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Certificados de Inversión Desmaterializados",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_DESMATERIALIZADOS_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones asociadas a Certificados de Inversión Desmaterializados.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_DESMATERIALIZADOS_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones asociadas a Certificados de Inversión Desmaterializados.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_EMISIONES_SUB_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos una Emisión Subordinada.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_EMISIONES_SUB_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Emisiones Subordinadas",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_EMISIONES_SUB_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Emisiones Subordinadas.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_EMISIONES_SUB_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Emisiones Subordinadas.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_MACROTITULOS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Macrotítulo de Inversión.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_MACROTITULOS_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Macrotítulos de Inversión",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_MACROTITULOS_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Macrotítulos de Inversión.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_MACROTITULOS_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Macrotítulos de Inversión.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_OTROS_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos otro tipo de Certificado de Inversión distinto a los anteriores.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_OTROS_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de otros Certificados de Inversión",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_OTROS_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en otros Certificados de Inversión.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_OTROS_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en otros Certificados de Inversión.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PERS_PREFERENTE_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito Personal Preferente.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PERS_PREFERENTE_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Créditos Personales Preferentes",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PERS_PREFERENTE_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Créditos Personales Preferentes.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_PERS_PREFERENTE_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Créditos Personales Preferentes.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_COMERCIAL_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito Comercial.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_COMERCIAL_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Créditos Comerciales",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_COMERCIAL_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Créditos Comerciales.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_COMERCIAL_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Créditos Comerciales.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_EMPRESARIAL_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito Empresarial.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_EMPRESARIAL_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Créditos Empresariales",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_EMPRESARIAL_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Créditos Empresariales.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_EMPRESARIAL_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Créditos Empresariales.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_SBD_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito de SBD",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_SBD_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Créditos de SBD",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_SBD_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Créditos del Sistema de Banca para el Desarrollo.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_SBD_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Créditos del Sistema de Banca para el Desarrollo.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_NAP_MICRO_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee al menos un Crédito NAP o Microcrédito.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_NAP_MICRO_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares de Créditos NAP o Microcréditos",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_NAP_MICRO_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en Créditos NAP o Microcréditos.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_NAP_MICRO_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en Créditos NAP o Microcréditos.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_FACT_PSA_FLAG",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Indica si el cliente posee otro crédito (Factoring y PSA)",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_FACT_PSA_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares en otros créditos (Factoring y PSA)",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_FACT_PSA_TRX_MONTO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Monto total de transacciones realizadas en otros créditos  (Factoring y PSA)",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_FACT_PSA_TRX_Q",
+      "type": "int",
+      "category": "PRODUCTO",
+      "description": "Cantidad de transacciones realizadas en otros créditos  (Factoring y PSA)",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_COLONES_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares correspondiente a Cuentas de Efectivo cuya moneda original es colones.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CE_DOLARES_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares correspondiente a Cuentas de Efectivo cuya moneda original es dólares.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_COLONES_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares correspondiente a Certificados de Inversión cuya moneda original es colones.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CDI_DOLARES_SALDO",
+      "type": "real",
+      "category": "PRODUCTO",
+      "description": "Saldo en dólares correspondiente a Certificados de Inversión cuya moneda original es dólares.",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ESTIMACION_INCOBRABLES",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares de estimación de incobrables, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "INGRESO_FINANCIERO",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares de ingreso financiero, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "GASTO_FINANCIERO",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares de gasto financiero, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MARGEN_FINANCIERO_BRUTO",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares del margen financiero bruto, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MARGEN_FINANCIERO_NETO",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares del margen financiero neto, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CONTRIBUCION_NETA",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares de contribución neta, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CONTRIBUCION_NETA_YTD",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares de contribución neta acumulada del año, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MARGEN_FINANCIERO_NETO_YTD",
+      "type": "real",
+      "category": "RENTABILIDAD",
+      "description": "Monto en dólares del margen financiero neto acumulada del año, según modelo del banco de rentabilidad",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MAL_DEUDOR_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si el cliente ha sido catalogado como mal deudor por estar en mora en el sistema financiero",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "APLICA_CREDITO",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si el cliente aplica para obtener un crédito",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_GENERAL",
+      "type": "string",
+      "category": "RIESGO",
+      "description": "Clasificación de riesgo del cliente según su Behaviour TC y Behaviour Prendario",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_SCORE_TC",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Puntaje del nivel de riesgo para obtener una tarjeta de crédito",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_TC",
+      "type": "string",
+      "category": "RIESGO",
+      "description": "Categorización del nivel de riesgo para obtener una tarjeta de crédito",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_SCORE_PRENDARIO",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Puntaje del nivel de riesgo para obtener un crédito prendario",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_PRENDARIO",
+      "type": "string",
+      "category": "RIESGO",
+      "description": "Categorización del nivel de riesgo para obtener un crédito prendario",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CATEGORIA_RIESGO",
+      "type": "string",
+      "category": "RIESGO",
+      "description": "Categoria de riesgo",
+      "tables": [
+        "Master AnalyticsMaster Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SCORE_EQUIFAX",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indicador Score calculado por Equifax",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CHP",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Categoría del Indicador de Comportamiento Histórico de Pago",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CHP_INDICADOR",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Indicador de Comportamiento Histórico de Pago",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MORA_MAXIMA_ACTUAL",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Mora máxima registrada por el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MORA_MAXIMA_HISTORICA",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Mora máxima histórica registrada por el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_DESC",
+      "type": "string",
+      "category": "RIESGO",
+      "description": "Detalle del Behaviour calculado para el cliente en tarjetas de crédito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_VENCIMIENTOS",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de vencimientos del cliente (no pago en la fecha)",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_MORA_15",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de veces que estuvo en mora 15 dias",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_MORA_30",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de veces que estuvo en mora 30 dias",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_MORA_45",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de veces que estuvo en mora 45 dias",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_MORA_60",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de veces que estuvo en mora 60 dias",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_CHP_2",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en CHP_2",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_CHP_3",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en CHP_3",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_A2",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de categoría de riesgo A2",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_B1",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con categoría de riesgo B1",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_B2",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con categoría de riesgo B2",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_C1",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con categoría de riesgo C1",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_C2",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con categoría de riesgo C2",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_D",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con categoría de riesgo D",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_CAT_E",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con categoría de riesgo E",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R2_1",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R2_1",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R2_2",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R2_2",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R2_3",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R2_3",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R3_1",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R3_1",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R3_2",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R3_2",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R3_3",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R3_3",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R3_4",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R3_4",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R3_5",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R3_5",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_Q_R3_6",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Cantidad de veces con Behaviour R3_6",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_MALAS_REFERENCIAS_MONTO",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Indica si el cliente esta en listas de malas referencias",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_JUICIOS_MONTO",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Indica si el clientes esta en lista de Juicios",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_NEGRA_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en lista negra",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_OFICIALIA_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en lista de oficialía",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_PATRONOS_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en la lista de patronos",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_EXCLUSION_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en la lista de exclusión",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_GIE_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en la lista de grupo de interés económico",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_GRUPO_DEUDOR_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en la lista de grupo deudor",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_LAVADO_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si el clientes esta en lista de lavado",
+      "tables": [
+        "Master AnalyticsMaster Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_JUICIOS_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en la lista de Juicios",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "LISTA_SEGURIDAD_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en la lista de seguridad",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "LISTA_PEP_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si esta en lista de persona políticamente expuesta",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BEHAVIOUR_TC_CAT",
+      "type": "string",
+      "category": "RIESGO",
+      "description": "Categoría de Behaviour calculado para el cliente en tarjetas de crédito",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_MORA_FLAG",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Indica si su tarjeta de crédito está en mora",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "RCI",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Relación Cuota Ingreso",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_TOTAL",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares del cliente en el Sistema Financiero",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_PROMERICA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares del cliente con Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_COMPETENCIA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares en el sistema financiero con la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_COMPETENCIA_DIRECTA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares en el sistema financiero con la competencia directa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_TC_TOTAL",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares del cliente para tarjetas de crédito en el Sistema Financiero",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_TC_PROMERICA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares del cliente de tarjetas de crédito para  Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_TC_COMPETENCIA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares en el sistema financiero de tarjetas de crédito con la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_SALDO_TC_COMPETENCIA_DIRECTA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Saldo total en dólares en el sistema financiero de tarjetas de crédito con la competencia directa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_TOTAL",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición total en el Sistema financiero",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_PROMERICA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición con Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_COMPETENCIA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición con la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_COMPETENCIA_DIRECTA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición con la competencia directa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_TC_TOTAL",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición total en tarjetas de crédito",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_TC_PROMERICA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición total en tarjetas de crédito con Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_TC_COMPETENCIA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición total en tarjetas de crédito con la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_EXPOSICION_TC_COMPETENCIA_DIRECTA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Exposición total en tarjetas de crédito con la competencia directa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_TOTAL",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota del Sistema financiero",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_PROMERICA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota de  Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_COMPETENCIA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota de la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_COMPETENCIA_DIRECTA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota de la competencia directa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_TC_TOTAL",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota para tarjetas de crédito del Sistema financiero",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_TC_PROMERICA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota para tarjetas de crédito para Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_TC_COMPETENCIA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota para tarjetas de crédito para la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_CUOTA_TC_COMPETENCIA_DIRECTA",
+      "type": "real",
+      "category": "RIESGO",
+      "description": "Total de cuota para tarjetas de crédito para la competencia directa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_OPERACIONES_COMPETENCIA",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de operaciones que posee el cliente con la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_OPERACIONES_TC_COMPETENCIA",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de tarjetas de crédito que tiene el cliente con la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "XML_Q_ENTIDADES_COMPETENCIA",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de entidades que tiene relacion el cliente que son de la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "XML_Q_ENTIDADES_TC_COMPETENCIA",
+      "type": "int",
+      "category": "RIESGO",
+      "description": "Total de entidades con tarjetas de crédito  que tiene relacion el cliente que son de la competencia",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": true,
+      "sensitivity": "HIGH"
+    },
+    {
+      "name": "INGRESO_MAX",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Ingreso máximo del cliente",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "INGRESO_COL",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Ingreso en colones registrado para el cliente",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "INGRESO",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Ingreso en dólares registrado para el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "NSE",
+      "type": "int",
+      "category": "RIQUEZA",
+      "description": "Nivel socioeconómico del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BI_Q",
+      "type": "int",
+      "category": "RIQUEZA",
+      "description": "Cantidad de bienes Inmuebles registrados del clientes",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BI_MONTO",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Monto en dólares del valor fiscal de los bienes Inmuebles",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BM_Q",
+      "type": "int",
+      "category": "RIQUEZA",
+      "description": "Cantidad de Bienes muebles registrados del cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BM_LUJO_Q",
+      "type": "int",
+      "category": "RIQUEZA",
+      "description": "Cantidad de bienes muebles lujo registrados por el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BM_MONTO",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Monto en dólares del valor fiscal de los bienes muebles",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BI_BM_Q",
+      "type": "int",
+      "category": "RIQUEZA",
+      "description": "Cantidad de bienes inmuebles y muebles registrados por el cliente",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "BI_BM_MONTO",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Monto en dólares del valor fiscal de los bienes Inmuebles y muebles registrados por el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_COMPRAS_COMERCIO_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Suma en dólares de las compras en comercios realizadas con tarjeta de crédito en el último año",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_RETIROS_EFECTIVO_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Suma en dólares de los retiros de efectivo realizados con tarjeta de crédito en el último año",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_INTERESES_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Total en dólares de intereses generados con Tarjeta de Crédito en el último año",
+      "tables": [
+        "Master Analytics",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TC_COMISIONES_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Total en dólares de comisiones generadas con Tarjeta de Crédito en el último año",
+      "tables": [
+        "Master Analytics",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TD_FACTURACION_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Facturación total en dólares realizada con tarjeta de débito en el último año",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_INTERESES_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Total en dólares de intereses generados por créditos en el último año",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "PR_COMISIONES_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Total en dólares de comisiones generadas por créditos en el último año",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TF_COMISIONES_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Total en dólares de comisiones generadas por transferencias en el último año",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ADQ_COMISIONES_LY",
+      "type": "real",
+      "category": "TRANSACCIONAL",
+      "description": "Total en dólares de comisiones generadas por adquirencia en el último año",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "FEC_PRIMER_PRODUCTO",
+      "type": "date",
+      "category": "VINCULACION",
+      "description": "Fecha del primer producto registrado con Banco Promerica",
+      "tables": [
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ESTADO_PERSONA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Estado actual de la persona",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "INDICE_VINCULACION",
+      "type": "float",
+      "category": "VINCULACION",
+      "description": "Índice de Vinculación calculado para el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "INDICE_ACTIVACION",
+      "type": "float",
+      "category": "VINCULACION",
+      "description": "Índice de Activación calculado para el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "IVP",
+      "type": "int",
+      "category": "VINCULACION",
+      "description": "Índice de Vinculación Ponderado calculado para el cliente",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_OPERATIVA_GIE",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clusterización de acuerdo al tamaño de la empresa, asociados al Grupo de Interés Económico de la Empresa Cliente.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA_GIE",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clasificación del cliente según el Customer Life Time Value (CLV), asociados al Grupo de Interés Económico de la Empresa Cliente.",
+      "tables": [
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ARQUETIPO",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clusterización con características más específicas de los segmentos operativos",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "MOTIVO_SEGMENTACION",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Motivo de asignación a segmentación estratégica",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "IVP_RANGO",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Rango del Índice de Vinculación Ponderado",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CLV_INDICADOR_CLIENTE",
+      "type": "real",
+      "category": "VINCULACION",
+      "description": "Indicador de Customer Lifetime Value",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "CLV_BANCO_BRUTO",
+      "type": "real",
+      "category": "VINCULACION",
+      "description": "Customer Lifetime Value bruto",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "NUEVO_MES_FLAG",
+      "type": "int",
+      "category": "VINCULACION",
+      "description": "Indica si el cliente es nuevo con respecto al mes anterior",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "NIVEL_DIGITALIZACION",
+      "type": "int",
+      "category": "VINCULACION",
+      "description": "Nivel de digitalización del cliente en Banco Promerica",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "NUEVO_FLAG",
+      "type": "int",
+      "category": "VINCULACION",
+      "description": "Indica si es un cliente nuevo respecto al año anterior",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_OPERATIVA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clusterización del cliente según su etapa del ciclo de vida o tamaño de la empresa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clasificación del cliente según el Customer Lifetime Value (CLV)",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA_AJUSTADA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Segmento estratégico ajustado al que pertenece el cliente según la última actualización",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "TIPO_SEGMENTACION_ESTRATEGICA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Indica si la metodología aplicada para obtener la Segmentación Estratégica es la Robusta o la Inicial",
+      "tables": [
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_CARTERA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clusterizacion de acuerdo a la gestión del cliente y la segmentacion operativa",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes",
+        "Master Empresas"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESPECIALIZADA",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Clasificación del cliente según su comportamiento bancario",
+      "tables": [
+        "Master Analytics",
+        "Master Clientes"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA_R",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Segmentación estratégica obtenida con el modelo robusto",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA_E",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Segmentación estratégica obtenida con el modelo estimado",
+      "tables": [
+        "Master Analytics"
+      ],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA_RIESGO",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Segmentación estratégica obtenida con regla de riesgo",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SEGMENTACION_ESTRATEGICA_REGLAS",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Segmentación estratégica obtenida con reglas de negocio",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "ASIGNADO_MODELO_DETALLE",
+      "type": "string",
+      "category": "VINCULACION",
+      "description": "Detalle de asignación del segmento estratégico",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    },
+    {
+      "name": "SALDO_ACTIVOS_CIC",
+      "type": "real",
+      "category": "RIQUEZA",
+      "description": "Monto total en dólares de crédito desembolsado en todo el sistema financiero",
+      "tables": [],
+      "pii": false,
+      "sensitivity": "LOW"
+    }
+  ]
+}
