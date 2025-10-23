@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Target, Sparkles, TrendingUp, Users } from "lucide-react";
+import { Target, Sparkles, TrendingUp, DollarSign } from "lucide-react";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +28,13 @@ export function CampaignSummaryWidget({ campaigns, className }: CampaignSummaryW
 
   const totalClientsImpacted = campaigns.reduce((sum, c) => sum + c.clientsAffected, 0);
   const totalPortfolioImpact = campaigns.reduce((sum, c) => sum + c.portfolioPercentage, 0);
+  
+  // Calculate total monetary impact
+  const totalMonetaryValue = campaigns.reduce((sum, c) => {
+    const valueStr = c.totalValue.replace(/[$M]/g, "").trim();
+    const value = parseFloat(valueStr);
+    return sum + (isNaN(value) ? 0 : value);
+  }, 0);
 
   const getImpactColor = (impact: "alto" | "medio" | "bajo") => {
     if (impact === "alto") return "text-green-600 bg-green-600/10";
@@ -53,11 +60,11 @@ export function CampaignSummaryWidget({ campaigns, className }: CampaignSummaryW
         <div className="grid grid-cols-2 gap-3 pb-3 border-b">
           <div className="space-y-1">
             <div className="text-xs text-muted-foreground flex items-center gap-1">
-              <Users className="h-3 w-3" />
-              Clientes Impactados
+              <DollarSign className="h-3 w-3" />
+              Saldos Impactados
             </div>
-            <div className="text-2xl font-mono font-bold" data-testid="metric-total-clients-impacted">
-              {totalClientsImpacted}
+            <div className="text-2xl font-mono font-bold text-accent" data-testid="metric-total-monetary-value">
+              ${totalMonetaryValue.toFixed(1)}M
             </div>
           </div>
           <div className="space-y-1">
@@ -65,7 +72,7 @@ export function CampaignSummaryWidget({ campaigns, className }: CampaignSummaryW
               <TrendingUp className="h-3 w-3" />
               Impacto Cartera
             </div>
-            <div className="text-2xl font-mono font-bold text-accent" data-testid="metric-total-portfolio-impact">
+            <div className="text-2xl font-mono font-bold" data-testid="metric-total-portfolio-impact">
               {totalPortfolioImpact}%
             </div>
           </div>
@@ -84,7 +91,7 @@ export function CampaignSummaryWidget({ campaigns, className }: CampaignSummaryW
                   {campaign.title}
                 </div>
                 <div className="text-xs text-muted-foreground" data-testid={`campaign-stats-${index + 1}`}>
-                  {campaign.clientsAffected} clientes · {campaign.portfolioPercentage}% cartera
+                  {campaign.totalValue} en saldos · {campaign.clientsAffected} clientes
                 </div>
               </div>
               <Badge

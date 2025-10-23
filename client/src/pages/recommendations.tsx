@@ -48,7 +48,7 @@ export default function Recommendations() {
       description: "156 clientes con documentación KYC venciendo en 15-30 días. Iniciar proceso de renovación preventiva para mantener cumplimiento y evitar restricciones operativas.",
       portfolioPercentage: 15,
       clientsAffected: 156,
-      totalValue: "N/A",
+      totalValue: "$12.8M",
       category: "Cumplimiento Preventivo",
       portfolioImpact: "alto" as const,
       dimensions: [
