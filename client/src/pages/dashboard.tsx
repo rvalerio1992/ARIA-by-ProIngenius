@@ -55,7 +55,7 @@ export default function Dashboard() {
       title: "Refresh KYC Preventivo",
       portfolioPercentage: 15,
       clientsAffected: 156,
-      totalValue: "N/A",
+      totalValue: "$12.8M",
       category: "Cumplimiento Preventivo",
       portfolioImpact: "alto" as const,
     },
