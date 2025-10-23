@@ -1,0 +1,18 @@
+{
+  "captaciones_total_crc": 42196704.45000001,
+  "colocaciones_total_crc": 10931313.22,
+  "saldo_neto_crc": 31265391.23000001,
+  "n_clientes": 926,
+  "cols_pasivas_detectadas": [
+    "CE_SALDO",
+    "CDI_SALDO",
+    "CE_PLAN_METAS_SALDO",
+    "TD_SALDO"
+  ],
+  "cols_activas_detectadas": [
+    "PR_PRENDARIO_SALDO",
+    "PR_HIPOTECARIO_SALDO",
+    "PR_OTROS_SALDO",
+    "TC_SALDO"
+  ]
+}
