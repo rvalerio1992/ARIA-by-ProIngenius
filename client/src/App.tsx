@@ -15,11 +15,15 @@ import Recommendations from "@/pages/recommendations";
 import Copilot from "@/pages/copilot";
 import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
+import Clients from "@/pages/clients";
+import ClientVista360 from "@/pages/client-vista360";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
+      <Route path="/clients" component={Clients} />
+      <Route path="/clients/:id" component={ClientVista360} />
       <Route path="/enfoque" component={Portfolio} />
       <Route path="/enfoque/:id" component={ClientDetail} />
       <Route path="/recommendations" component={Recommendations} />

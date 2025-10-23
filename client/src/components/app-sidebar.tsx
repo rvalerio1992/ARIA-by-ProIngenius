@@ -30,6 +30,12 @@ const menuItems = [
     icon: LayoutDashboard,
   },
   {
+    title: "Cartera Clientes",
+    url: "/clients",
+    icon: Users,
+    badge: "926",
+  },
+  {
     title: "Enfoque 1:1",
     url: "/enfoque",
     icon: Users,

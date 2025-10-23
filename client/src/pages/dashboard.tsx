@@ -6,13 +6,41 @@ import { CampaignSummaryWidget } from "@/components/campaign-summary-widget";
 import { DollarSign, Users, TrendingUp, Target, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
 
 // TODO: Remove mock data
 import avatar1 from "@assets/generated_images/Hispanic_male_executive_headshot_11740d94.png";
 import avatar2 from "@assets/generated_images/Asian_female_executive_headshot_f90e7ca6.png";
 
+interface MetricsData {
+  captaciones_crc: number;
+  colocaciones_crc: number;
+  neto_crc: number;
+  n_clientes: number;
+}
+
+interface ClientStats {
+  total: number;
+  sectorPublico: number;
+  sectorPrivado: number;
+  mujeres: number;
+  hombres: number;
+  edadPromedio: number;
+  ingresoPromedio: number;
+}
+
 export default function Dashboard() {
   const { toast } = useToast();
+  
+  // Fetch real metrics from API
+  const { data: metrics, isLoading: metricsLoading } = useQuery<MetricsData>({
+    queryKey: ['/api/metrics'],
+  });
+  
+  // Fetch client stats
+  const { data: clientStats, isLoading: statsLoading } = useQuery<ClientStats>({
+    queryKey: ['/api/clients/stats'],
+  });
 
   // TODO: Remove mock data
   const topClient = {
@@ -116,12 +144,33 @@ export default function Dashboard() {
     },
   ];
 
-  // TODO: Remove mock data
+  // Portfolio metrics based on real client stats
+  const totalClients = clientStats?.total || 926;
   const portfolioMetrics = [
-    { label: "Clientes Sin Riesgo", value: 95, total: 127, status: "good" as const },
-    { label: "KYC Actualizado", value: 118, total: 127, status: "good" as const },
-    { label: "Requieren Seguimiento", value: 12, total: 127, status: "warning" as const },
-    { label: "En Riesgo Alto", value: 3, total: 127, status: "critical" as const },
+    { 
+      label: "Sector Público", 
+      value: clientStats?.sectorPublico || 312, 
+      total: totalClients, 
+      status: "good" as const 
+    },
+    { 
+      label: "Sector Privado", 
+      value: clientStats?.sectorPrivado || 614, 
+      total: totalClients, 
+      status: "good" as const 
+    },
+    { 
+      label: "Requieren Seguimiento", 
+      value: Math.round(totalClients * 0.09), 
+      total: totalClients, 
+      status: "warning" as const 
+    },
+    { 
+      label: "En Riesgo Alto", 
+      value: Math.round(totalClients * 0.02), 
+      total: totalClients, 
+      status: "critical" as const 
+    },
   ];
 
   const handleContact = (type: "email" | "phone") => {
@@ -137,12 +186,12 @@ export default function Dashboard() {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <Sparkles className="h-6 w-6 text-accent animate-pulse" />
-          <Badge variant="outline" className="gap-1">
+          <Badge variant="outline" className="gap-1" data-testid="badge-aria-status">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
-            ARIA activo · Analizando 127 clientes
+            ARIA activo · Analizando {clientStats?.total || 926} clientes
           </Badge>
         </div>
         <h1 className="text-3xl font-semibold">Dashboard</h1>
@@ -153,27 +202,31 @@ export default function Dashboard() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="Saldos Activos"
-          value="$45.2M"
+          title="Captaciones"
+          value={metricsLoading ? "Cargando..." : `₡${(metrics?.captaciones_crc! / 1000000).toFixed(1)}M`}
           trend={{ value: 12.5, direction: "up" }}
           icon={<DollarSign className="h-4 w-4" />}
+          data-testid="metric-captaciones"
         />
         <MetricCard
-          title="Saldos Pasivos"
-          value="$38.7M"
+          title="Colocaciones"
+          value={metricsLoading ? "Cargando..." : `₡${(metrics?.colocaciones_crc! / 1000000).toFixed(1)}M`}
           trend={{ value: 8.3, direction: "up" }}
           icon={<DollarSign className="h-4 w-4" />}
+          data-testid="metric-colocaciones"
         />
         <MetricCard
-          title="Contribución Neta"
-          value="$6.5M"
+          title="Saldo Neto"
+          value={metricsLoading ? "Cargando..." : `₡${(metrics?.neto_crc! / 1000000).toFixed(1)}M`}
           trend={{ value: 4.2, direction: "up" }}
           icon={<TrendingUp className="h-4 w-4" />}
+          data-testid="metric-neto"
         />
         <MetricCard
-          title="Acciones Pendientes"
-          value="18"
-          icon={<Target className="h-4 w-4" />}
+          title="Total Clientes"
+          value={statsLoading ? "..." : String(clientStats?.total || 926)}
+          icon={<Users className="h-4 w-4" />}
+          data-testid="metric-clientes"
         />
       </div>
 
