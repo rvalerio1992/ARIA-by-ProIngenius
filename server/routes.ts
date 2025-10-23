@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { loadClients, getClientById, getClientStats } from "./data-loader";
 import { generateClientInsights } from "./ai-insights";
+import { generateAriaResponse } from "./aria-chat";
 
 const RAG_API_URL = process.env.RAG_API_URL || 'http://localhost:8000';
 
@@ -173,6 +174,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error('Error in RAG query:', error);
       res.status(500).json({ error: 'Error processing RAG query' });
+    }
+  });
+  
+  // ===== ARIA CHAT ENDPOINT =====
+  
+  // POST /api/aria/ask - Preguntas a ARIA con contexto de BD
+  app.post("/api/aria/ask", async (req, res) => {
+    try {
+      const { message } = req.body;
+      
+      if (!message || typeof message !== 'string') {
+        return res.status(400).json({ error: 'Message is required' });
+      }
+      
+      const response = await generateAriaResponse(message);
+      
+      res.json({
+        message: response,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error('Error in ARIA chat:', error);
+      res.status(500).json({ 
+        error: 'Error processing ARIA request',
+        message: 'Lo siento, hubo un error al procesar tu pregunta. Por favor intenta nuevamente.',
+      });
     }
   });
 
