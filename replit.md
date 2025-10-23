@@ -89,6 +89,60 @@ Preferred communication style: Simple, everyday language.
 
 **Component Variants**: Extensive variant system for buttons (default, destructive, outline, secondary, ghost) and badges with size options (sm, default, lg, icon).
 
+### RAG API Backend (Python/FastAPI)
+
+**Framework**: FastAPI with uvicorn ASGI server running independently on port 8000.
+
+**Architecture**: Separate Python backend providing RAG (Retrieval-Augmented Generation) capabilities and portfolio metrics calculation. Designed to run alongside the main Express/React application.
+
+**Services**:
+1. **RAG Service** (`rag_service.py`): 
+   - ChromaDB persistent vector store with 926 indexed client profiles
+   - OpenAI embeddings (text-embedding-3-small) for semantic search
+   - GPT-4 integration for natural language query responses
+   - Lazy initialization: only loads when first RAG query is made
+   - Batch indexing (100 documents per batch) on first run
+   - Vector store persists in `./rag_cartera` directory
+
+2. **Metrics Service** (`metrics_service.py`):
+   - Portfolio calculations using `metrics_config.json` definitions
+   - Saldo calculations: captaciones (₡42.2M), colocaciones (₡10.9M), neto (₡31.3M)
+   - No external dependencies - works without OpenAI API key
+   - 926 client dataset from `row_cards.jsonl`
+
+**Endpoints**:
+- `GET /health` - Service health check and status
+- `GET /ask?q={query}` - RAG-powered semantic search over clients (requires OpenAI key)
+- `GET /metrics/saldo?tipo={neto|captaciones|colocaciones}` - Portfolio metrics
+- `GET /metrics/saldo_por_producto` - Product-level breakdown
+- `GET /metrics/summary` - Complete portfolio summary
+- `GET /docs` - Interactive API documentation (Swagger UI)
+
+**Data Files** (in `server/api_rag/data/`):
+- `row_cards.jsonl` - 926 client profiles with demographic and financial data
+- `portfolio_totals.json` - Pre-calculated portfolio aggregates
+- `metrics_config.json` - Product/column definitions for captaciones and colocaciones
+- `schema_card.json` - Response validation schema
+
+**Execution**: 
+```bash
+cd server/api_rag
+python3 run_api.py
+```
+Server available at http://0.0.0.0:8000 with interactive docs at /docs
+
+**Security**: 
+- CORS enabled for development (all origins)
+- OpenAI API key managed via `AI_INTEGRATIONS_OPENAI_API_KEY` secret
+- Graceful degradation: metrics endpoints work without OpenAI key
+
+**Recent Changes (October 23, 2025)**:
+- Implemented complete RAG API backend with FastAPI
+- Added ChromaDB vector store with OpenAI embeddings
+- Created metrics calculation service for portfolio analytics
+- Comprehensive testing suite validates all endpoints
+- README documentation with usage examples and deployment guide
+
 ## External Dependencies
 
 ### Third-Party UI Libraries
