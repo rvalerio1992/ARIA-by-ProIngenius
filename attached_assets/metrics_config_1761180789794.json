@@ -1,0 +1,19 @@
+{
+  "version": "v0.1",
+  "definitions": {
+    "captaciones": [
+      "CE_SALDO",
+      "CDI_SALDO",
+      "CE_PLAN_METAS_SALDO",
+      "TD_SALDO"
+    ],
+    "colocaciones": [
+      "PR_PRENDARIO_SALDO",
+      "PR_HIPOTECARIO_SALDO",
+      "PR_OTROS_SALDO",
+      "TC_SALDO"
+    ],
+    "neto": "captaciones - colocaciones"
+  },
+  "notes": "Ajusta las columnas según la contabilidad interna si es necesario."
+}

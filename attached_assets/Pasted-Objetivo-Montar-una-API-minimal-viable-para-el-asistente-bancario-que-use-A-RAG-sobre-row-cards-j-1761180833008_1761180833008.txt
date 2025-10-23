@@ -1,0 +1,90 @@
+Objetivo
+Montar una API minimal viable para el asistente bancario que use:
+(A) RAG sobre row_cards.jsonl con OpenAI embeddings y ChromaDB (o el vector store que prefieras) para preguntas “tipo cliente/segmento”;
+(B) Tools de métricas basadas en metrics_config.json y portfolio_totals_example.json para preguntas de cartera (agregados exactos);
+(C) Usar schema_card.json como guía semántica (nombres/definiciones de columnas) y para validación de respuestas.
+
+Entradas ya cargadas (no generes código para crearlas):
+
+schema_card.json (definición de columnas y sensibilidad)
+
+row_cards.jsonl (resúmenes por cliente, con cliente_id, perfil, resumen)
+
+metrics_config.json (mapeo canónico de saldos: captaciones, colocaciones, neto)
+
+portfolio_totals_example.json (ejemplo de totales con mis datos reales)
+
+Lo que debes construir (sin exponer mi API Key en el código):
+
+Gestión de Secrets: leer OPENAI_API_KEY desde los Secrets del proyecto (variable de entorno).
+
+Base vectorial:
+
+Crear/abrir una colección persistente (p. ej. Chroma con ./rag_cartera)
+
+Indexar exclusivamente los textos de row_cards.jsonl (campo resumen) con embeddings de OpenAI (text-embedding-3-small), y guardar metadata mínima (ej. cliente_id, perfil).
+
+Si el índice ya existe, no volver a indexar.
+
+Endpoints HTTP (JSON puros):
+
+GET /health → {status: "ok", vector_docs: <conteo_docs>}
+
+GET /ask?q=… → flujo RAG:
+a) generar embedding de la consulta con OpenAI,
+b) recuperar top-5 row_cards relevantes del vector store,
+c) armar prompt breve para GPT (modelo gpt-4o), incluyendo el contexto recuperado,
+d) responder solo con lo recuperado, citando cliente_id cuando aplique,
+e) retornar {answer, matches:[{cliente_id, ...}]}.
+
+GET /metrics/saldo?tipo=neto|captaciones|colocaciones
+Usar exclusivamente el mapeo de metrics_config.json para sumar columnas de saldos. La respuesta debe ser:
+{tipo, crc, (capt?), (colo?), cols}.
+
+(Opcional) GET /metrics/saldo_por_producto con desglose por columna.
+
+Reglas de respuesta del LLM (prompt contract):
+
+Usa RAG solo para consultas de clientes/segmentos.
+
+Usa tools de métricas (no RAG) para agregados de cartera.
+
+Si falta data, di “no disponible”.
+
+No inventes columnas; respétalas según schema_card.json.
+
+CORS abierto para pruebas (permitir front futuro).
+
+Arranque del servidor: exponer un servicio web (host 0.0.0.0, port 8000).
+
+Criterios de calidad:
+
+No colocar mi OPENAI_API_KEY en el código; leerla de Secrets.
+
+Indexación idempotente (si ya está, no re-indexar).
+
+Errores claros cuando falte algún archivo.
+
+JSON limpios y consistentes.
+
+Pruebas esperadas (ejemplos reales):
+
+GET /health → debe mostrar vector_docs > 0.
+
+GET /ask?q=clientes con alto ingreso y antigüedad → devolver answer + matches con cliente_id.
+
+GET /metrics/saldo?tipo=neto → crc = captaciones − colocaciones, usando definiciones de metrics_config.json.
+
+Entrega final:
+
+Proyecto corriendo en Replit con Deploy (Autoscale o VM).
+
+Documentar en README cómo setear OPENAI_API_KEY, cómo probar cada endpoint, y nota de que schema_card.json, row_cards.jsonl, metrics_config.json y portfolio_totals_example.json ya están provistos y no deben regenerarse.
+
+Notas:
+
+No necesito front-end ahora.
+
+El foco es el patrón: RAG para contexto por cliente y tools para agregados.
+
+Mantener simple, modular y listo para conectar UI después.
