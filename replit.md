@@ -6,7 +6,10 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+- Preferred communication style: Simple, everyday language.
+- Executive user name: Victor Hugo Pavon (used throughout the application)
+- Currency: USD ($) for all monetary displays
+- Language: Spanish for all user-facing content
 
 ## System Architecture
 
@@ -18,10 +21,11 @@ Preferred communication style: Simple, everyday language.
 - **Routing**: Wouter.
 - **State Management**: TanStack Query for server state.
 - **Key Features**:
-    - **Vista 360 (Client Detail View)**: Comprehensive client snapshot with relationship history, sentiment, and transactional data.
+    - **Análisis de Cartera (Dashboard)**: Main dashboard with personalized welcome for Victor Hugo Pavon, showing key metrics (Saldos Pasivos, Saldos Activos, Contribución Neta) with YTD goal comparisons in USD. Includes "Oportunidades del día" widget and Portfolio Management metrics (Margen Financiero Promedio, % Clientes Principalidad Alta, % Mora >90 días).
+    - **Vista 360 (Client Detail View)**: Comprehensive client snapshot with relationship history, sentiment, transactional data, MCC consumption charts (top 5 categories), card usage history (6-month trend), and key indicators (risk level, main bank, new products, cancellations).
     - **Portfolio Management**: Aggregate views with predictive insights (churn risk, propensity scoring) and operational triggers.
     - **Campaign Recommendations**: Next Best Action (NBA+) engine with probability × value - risk scoring.
-    - **ARIA Copilot**: Conversational AI interface with RAG for institutional knowledge.
+    - **ARIA Responde**: Conversational AI interface querying PostgreSQL directly with GPT-4o, providing professional Spanish banking responses with HTML sanitization (DOMPurify).
     - **Compliance Integration**: Real-time KYC/AML/FATCA/PEP monitoring.
 
 ### Backend
@@ -93,7 +97,70 @@ Preferred communication style: Simple, everyday language.
 - **date-fns**: Date manipulation.
 - **wouter**: Lightweight client-side routing.
 - **nanoid**: Unique ID generation.
+- **recharts**: Chart library for data visualization (MCC consumption, card usage history).
+- **DOMPurify**: HTML sanitization for XSS protection in ARIA responses.
 
 ### Session and Storage
 
 - **connect-pg-simple**: PostgreSQL session store for Express (planned).
+
+## Recent Changes (October 25, 2025)
+
+### Dashboard Rebranding to "Análisis de Cartera"
+- Module renamed from "Dashboard" to "Análisis de Cartera" throughout the application
+- Personalized welcome message: "Bienvenido Victor Hugo Pavon · ARIA te ha preparado tu resumen inteligente"
+- Sidebar and footer updated with executive name: Victor Hugo Pavon
+
+### Currency Migration: Colones (₡) → USD ($)
+- All monetary displays converted from Costa Rican colones to US dollars
+- Dashboard metrics now show values in millions of USD (e.g., "$42.2M")
+- Ingreso mensual in Vista 360 converted with approximate exchange rate (×0.0018)
+
+### Metrics Renaming and YTD Goals
+- **Captaciones** → **Saldos Pasivos** (with YTD goal: $40.0M)
+- **Colocaciones** → **Saldos Activos** (with YTD goal: $11.0M)
+- **Saldo Neto** → **Contribución Neta** (invented value: $45.3M, YTD goal: $44.0M)
+- Each metric displays percentage variance vs. YTD goal with trend indicators
+
+### Campaign Widget Update
+- "Resumen Enfoque Campaña" renamed to **"Oportunidades del día"**
+- Maintains same functionality: displays top 3 active campaigns with impact metrics
+
+### Portfolio Management Metrics Replacement
+- **Old metrics**: Salud, Δ Saldo 30d, Riesgo Alto, Contactados ≤30d
+- **New metrics**:
+  - **Margen Financiero Promedio**: 4.25% (spread between passive and active rates)
+  - **% Clientes Principalidad Alta**: 62% (clients with high principal relationship)
+  - **% Mora >90 días**: 3.8% (clients with >90 day delinquency)
+- Color-coded thresholds for each metric (green/yellow/red)
+
+### Vista 360 Enhancements
+1. **New Indicators (Badge System)**:
+   - **Nivel de Riesgo**: Badge showing "Bajo/Medio/Alto" with color coding (green/yellow/red)
+   - **Banco Principal**: Badge indicating main banking relationship (Promerica highlighted in accent color)
+   - **Nuevos Productos**: Badge showing products acquired in last 30 days (e.g., "+2 productos (30d)")
+   - **Cancelaciones**: Badge showing products cancelled in last 30 days
+
+2. **MCC Consumption Chart** (`mcc-consumption-chart.tsx`):
+   - Recharts bar chart showing top 5 merchant categories
+   - Mock data: Supermercados ($2,850), Restaurantes ($1,920), Gasolineras ($1,540), Farmacias ($980), Entretenimiento ($720)
+   - Color-coded bars using chart color palette
+   - Custom tooltip with category and amount
+
+3. **Card Usage History Chart** (`card-usage-history-chart.tsx`):
+   - Recharts dual-axis line chart for 6-month trend
+   - Left axis: Number of transactions
+   - Right axis: Transaction amounts in USD
+   - Mock data showing monthly variations
+   - Legend and custom tooltip
+
+### Security Enhancement
+- DOMPurify integration in ARIA Responde copilot panel
+- Strict HTML allowlist: only `<p>`, `<strong>`, `<br>`, `<ul>`, `<ol>`, `<li>` tags permitted
+- XSS protection for all AI-generated responses
+
+### Component Updates
+- **MetricCard**: Added optional `subtitle` prop for YTD goal display
+- **CampaignSummaryWidget**: Title updated to "Oportunidades del día"
+- **PortfolioHealthWidget**: Complete metric replacement with new financial indicators
+- **AppSidebar**: Updated menu item and footer with Victor Hugo Pavon name

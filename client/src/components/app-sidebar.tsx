@@ -25,7 +25,7 @@ import { Badge } from "@/components/ui/badge";
 
 const menuItems = [
   {
-    title: "Dashboard",
+    title: "Análisis de Cartera",
     url: "/",
     icon: LayoutDashboard,
   },
@@ -136,7 +136,7 @@ export function AppSidebar() {
       <SidebarFooter className="border-t p-4">
         <div className="text-xs">
           <p className="text-muted-foreground">Ejecutivo Premium</p>
-          <p className="font-medium text-foreground">María González</p>
+          <p className="font-medium text-foreground">Victor Hugo Pavon</p>
           <div className="flex items-center gap-1 mt-2 text-accent">
             <Sparkles className="h-3 w-3" />
             <span className="text-[10px]">ARIA activo · Aprendiendo</span>

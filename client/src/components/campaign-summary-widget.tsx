@@ -48,7 +48,7 @@ export function CampaignSummaryWidget({ campaigns, className }: CampaignSummaryW
         <div className="flex items-center justify-between gap-2">
           <CardTitle className="text-lg flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Resumen Enfoque Campaña
+            Oportunidades del día
           </CardTitle>
           <Badge variant="outline" className="gap-1">
             <Sparkles className="h-3 w-3 text-accent" />

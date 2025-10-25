@@ -9,11 +9,12 @@ interface MetricCardProps {
     value: number;
     direction: "up" | "down" | "neutral";
   };
+  subtitle?: string;
   icon?: React.ReactNode;
   className?: string;
 }
 
-export function MetricCard({ title, value, trend, icon, className }: MetricCardProps) {
+export function MetricCard({ title, value, trend, subtitle, icon, className }: MetricCardProps) {
   const getTrendIcon = () => {
     if (!trend) return null;
     if (trend.direction === "up") return <TrendingUp className="h-4 w-4" />;
@@ -42,6 +43,11 @@ export function MetricCard({ title, value, trend, icon, className }: MetricCardP
           <div className={cn("flex items-center gap-1 text-xs mt-1", getTrendColor())}>
             {getTrendIcon()}
             <span>{Math.abs(trend.value)}%</span>
+          </div>
+        )}
+        {subtitle && (
+          <div className="text-xs text-muted-foreground mt-1">
+            {subtitle}
           </div>
         )}
       </CardContent>

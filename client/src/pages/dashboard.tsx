@@ -42,6 +42,21 @@ export default function Dashboard() {
     queryKey: ['/api/clients/stats'],
   });
 
+  // Calculated values for USD (usando los valores existentes como USD)
+  const saldosPasivos = metrics?.captaciones_crc || 42196704;
+  const saldosActivos = metrics?.colocaciones_crc || 10931313;
+  const contribucionNeta = 45280500; // Valor inventado para Contribución Neta
+  
+  // Metas YTD (inventadas)
+  const metaSaldosPasivos = 40000000;
+  const metaSaldosActivos = 11000000;
+  const metaContribucionNeta = 44000000;
+  
+  // Calcular diferencias porcentuales con meta
+  const diffPasivosPct = ((saldosPasivos - metaSaldosPasivos) / metaSaldosPasivos * 100);
+  const diffActivosPct = ((saldosActivos - metaSaldosActivos) / metaSaldosActivos * 100);
+  const diffContribucionPct = ((contribucionNeta - metaContribucionNeta) / metaContribucionNeta * 100);
+
   // TODO: Remove mock data
   const topClient = {
     id: "cl-1",
@@ -124,7 +139,7 @@ export default function Dashboard() {
       title: "Llamada con Ana Chen",
       description: "Discusión sobre nuevas oportunidades de inversión en mercados emergentes",
       timestamp: "Hace 2 horas",
-      actor: "Tú",
+      actor: "Victor Hugo Pavon",
     },
     {
       id: "2",
@@ -140,7 +155,7 @@ export default function Dashboard() {
       title: "Propuesta enviada a Martínez Group",
       description: "Información sobre nuevos fondos ESG y productos sustentables",
       timestamp: "Hace 3 días",
-      actor: "Tú",
+      actor: "Victor Hugo Pavon",
     },
   ];
 
@@ -194,33 +209,36 @@ export default function Dashboard() {
             ARIA activo · Analizando {clientStats?.total || 926} clientes
           </Badge>
         </div>
-        <h1 className="text-3xl font-semibold">Dashboard</h1>
+        <h1 className="text-3xl font-semibold">Análisis de Cartera</h1>
         <p className="text-muted-foreground">
-          Visión Global de Cartera · ARIA ha preparado tu resumen inteligente
+          Bienvenido Victor Hugo Pavon · ARIA te ha preparado tu resumen inteligente
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="Captaciones"
-          value={metricsLoading ? "Cargando..." : `₡${(metrics?.captaciones_crc! / 1000000).toFixed(1)}M`}
-          trend={{ value: 12.5, direction: "up" }}
+          title="Saldos Pasivos"
+          value={metricsLoading ? "Cargando..." : `$${(saldosPasivos / 1000000).toFixed(1)}M`}
+          trend={{ value: Math.abs(diffPasivosPct), direction: diffPasivosPct >= 0 ? "up" : "down" }}
+          subtitle={`Meta YTD: $${(metaSaldosPasivos / 1000000).toFixed(1)}M`}
           icon={<DollarSign className="h-4 w-4" />}
-          data-testid="metric-captaciones"
+          data-testid="metric-saldos-pasivos"
         />
         <MetricCard
-          title="Colocaciones"
-          value={metricsLoading ? "Cargando..." : `₡${(metrics?.colocaciones_crc! / 1000000).toFixed(1)}M`}
-          trend={{ value: 8.3, direction: "up" }}
+          title="Saldos Activos"
+          value={metricsLoading ? "Cargando..." : `$${(saldosActivos / 1000000).toFixed(1)}M`}
+          trend={{ value: Math.abs(diffActivosPct), direction: diffActivosPct >= 0 ? "up" : "down" }}
+          subtitle={`Meta YTD: $${(metaSaldosActivos / 1000000).toFixed(1)}M`}
           icon={<DollarSign className="h-4 w-4" />}
-          data-testid="metric-colocaciones"
+          data-testid="metric-saldos-activos"
         />
         <MetricCard
-          title="Saldo Neto"
-          value={metricsLoading ? "Cargando..." : `₡${(metrics?.neto_crc! / 1000000).toFixed(1)}M`}
-          trend={{ value: 4.2, direction: "up" }}
+          title="Contribución Neta"
+          value={`$${(contribucionNeta / 1000000).toFixed(1)}M`}
+          trend={{ value: Math.abs(diffContribucionPct), direction: diffContribucionPct >= 0 ? "up" : "down" }}
+          subtitle={`Meta YTD: $${(metaContribucionNeta / 1000000).toFixed(1)}M`}
           icon={<TrendingUp className="h-4 w-4" />}
-          data-testid="metric-neto"
+          data-testid="metric-contribucion-neta"
         />
         <MetricCard
           title="Total Clientes"

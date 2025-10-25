@@ -12,9 +12,16 @@ import {
   AlertCircle,
   CheckCircle,
   ArrowLeft,
-  Sparkles
+  Sparkles,
+  Building2,
+  AlertTriangle,
+  PlusCircle,
+  MinusCircle,
+  Shield
 } from "lucide-react";
 import { Link } from "wouter";
+import { MCCConsumptionChart } from "@/components/mcc-consumption-chart";
+import { CardUsageHistoryChart } from "@/components/card-usage-history-chart";
 
 interface ClientProfile {
   sexo: string;
@@ -74,6 +81,12 @@ export default function ClientVista360() {
     enabled: !!id,
   });
   
+  // Mock data for additional metrics (these would come from API in production)
+  const nivelRiesgo = "Bajo"; // Bajo, Medio, Alto
+  const bancoPrincipal = "Promerica"; // Promerica, BAC, BCR, Otro
+  const nuevosProductos30d = 2; // Productos adquiridos últimos 30 días
+  const cancelaciones30d = 0; // Productos cancelados últimos 30 días
+  
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -117,6 +130,19 @@ export default function ClientVista360() {
   const { perfil, resumen, insights } = clientData;
   const esSectorPublico = perfil.sector_publico_flag === 1;
   
+  // Determine risk badge color
+  const getRiskColor = (nivel: string) => {
+    if (nivel === "Bajo") return "bg-green-600/10 text-green-600";
+    if (nivel === "Medio") return "bg-yellow-600/10 text-yellow-600";
+    return "bg-red-600/10 text-red-600";
+  };
+  
+  // Determine bank principal badge color
+  const getBankColor = (banco: string) => {
+    if (banco === "Promerica") return "bg-accent/10 text-accent";
+    return "bg-muted text-muted-foreground";
+  };
+  
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -136,7 +162,7 @@ export default function ClientVista360() {
         
         <div className="flex items-start justify-between">
           <div>
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-3 mb-2 flex-wrap">
               <h1 className="text-3xl font-semibold" data-testid="text-client-id">
                 {clientData.cliente_id}
               </h1>
@@ -146,6 +172,42 @@ export default function ClientVista360() {
               >
                 {esSectorPublico ? "Sector Público" : "Sector Privado"}
               </Badge>
+              <Badge 
+                variant="secondary" 
+                className={getRiskColor(nivelRiesgo)}
+                data-testid="badge-risk-level"
+              >
+                <Shield className="h-3 w-3 mr-1" />
+                Riesgo: {nivelRiesgo}
+              </Badge>
+              <Badge 
+                variant="secondary"
+                className={getBankColor(bancoPrincipal)}
+                data-testid="badge-main-bank"
+              >
+                <Building2 className="h-3 w-3 mr-1" />
+                Principal: {bancoPrincipal}
+              </Badge>
+              {nuevosProductos30d > 0 && (
+                <Badge 
+                  variant="secondary"
+                  className="bg-blue-600/10 text-blue-600"
+                  data-testid="badge-new-products"
+                >
+                  <PlusCircle className="h-3 w-3 mr-1" />
+                  +{nuevosProductos30d} productos (30d)
+                </Badge>
+              )}
+              {cancelaciones30d > 0 && (
+                <Badge 
+                  variant="secondary"
+                  className="bg-orange-600/10 text-orange-600"
+                  data-testid="badge-cancellations"
+                >
+                  <MinusCircle className="h-3 w-3 mr-1" />
+                  {cancelaciones30d} cancelaciones (30d)
+                </Badge>
+              )}
             </div>
             <p className="text-muted-foreground" data-testid="text-resumen">
               {resumen}
@@ -162,7 +224,7 @@ export default function ClientVista360() {
       {/* Quick Stats */}
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Edad</CardTitle>
             <User className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -173,20 +235,20 @@ export default function ClientVista360() {
         </Card>
         
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Ingreso Mensual</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold" data-testid="text-ingreso">
-              ₡{perfil.ingreso.toLocaleString()}
+              ${(perfil.ingreso * 0.0018).toFixed(0)}
             </div>
-            <p className="text-xs text-muted-foreground">CRC/mes</p>
+            <p className="text-xs text-muted-foreground">USD/mes (aprox)</p>
           </CardContent>
         </Card>
         
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Antigüedad Laboral</CardTitle>
             <Briefcase className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -201,7 +263,7 @@ export default function ClientVista360() {
         </Card>
         
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Sector</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -356,6 +418,12 @@ export default function ClientVista360() {
             </div>
           </CardContent>
         </Card>
+
+        {/* 5. MCC Consumption Chart */}
+        <MCCConsumptionChart />
+        
+        {/* 6. Card Usage History Chart */}
+        <CardUsageHistoryChart />
       </div>
     </div>
   );
