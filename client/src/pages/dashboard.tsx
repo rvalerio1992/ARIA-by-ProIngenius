@@ -220,6 +220,10 @@ export default function Dashboard() {
           title="Saldos Pasivos"
           value={metricsLoading ? "Cargando..." : `$${(saldosPasivos / 1000000).toFixed(1)}M`}
           trend={{ value: Math.abs(diffPasivosPct), direction: diffPasivosPct >= 0 ? "up" : "down" }}
+          status={{
+            label: diffPasivosPct >= 0 ? "Sobre meta" : "Bajo meta",
+            type: diffPasivosPct >= 0 ? "success" : "warning"
+          }}
           subtitle={`Meta YTD: $${(metaSaldosPasivos / 1000000).toFixed(1)}M`}
           icon={<DollarSign className="h-4 w-4" />}
           data-testid="metric-saldos-pasivos"
@@ -228,6 +232,10 @@ export default function Dashboard() {
           title="Saldos Activos"
           value={metricsLoading ? "Cargando..." : `$${(saldosActivos / 1000000).toFixed(1)}M`}
           trend={{ value: Math.abs(diffActivosPct), direction: diffActivosPct >= 0 ? "up" : "down" }}
+          status={{
+            label: diffActivosPct >= 0 ? "Sobre meta" : "Bajo meta",
+            type: diffActivosPct >= 0 ? "success" : "warning"
+          }}
           subtitle={`Meta YTD: $${(metaSaldosActivos / 1000000).toFixed(1)}M`}
           icon={<DollarSign className="h-4 w-4" />}
           data-testid="metric-saldos-activos"
@@ -236,12 +244,16 @@ export default function Dashboard() {
           title="Contribución Neta"
           value={`$${(contribucionNeta / 1000000).toFixed(1)}M`}
           trend={{ value: Math.abs(diffContribucionPct), direction: diffContribucionPct >= 0 ? "up" : "down" }}
+          status={{
+            label: diffContribucionPct >= 0 ? "Sobre meta" : "Bajo meta",
+            type: diffContribucionPct >= 0 ? "success" : "warning"
+          }}
           subtitle={`Meta YTD: $${(metaContribucionNeta / 1000000).toFixed(1)}M`}
           icon={<TrendingUp className="h-4 w-4" />}
           data-testid="metric-contribucion-neta"
         />
         <MetricCard
-          title="Total Clientes"
+          title="Clientes en Cartera"
           value={statsLoading ? "..." : String(clientStats?.total || 926)}
           icon={<Users className="h-4 w-4" />}
           data-testid="metric-clientes"

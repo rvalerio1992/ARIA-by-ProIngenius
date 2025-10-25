@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,11 +11,15 @@ interface MetricCardProps {
     direction: "up" | "down" | "neutral";
   };
   subtitle?: string;
+  status?: {
+    label: string;
+    type: "success" | "warning" | "neutral";
+  };
   icon?: React.ReactNode;
   className?: string;
 }
 
-export function MetricCard({ title, value, trend, subtitle, icon, className }: MetricCardProps) {
+export function MetricCard({ title, value, trend, subtitle, status, icon, className }: MetricCardProps) {
   const getTrendIcon = () => {
     if (!trend) return null;
     if (trend.direction === "up") return <TrendingUp className="h-4 w-4" />;
@@ -29,6 +34,13 @@ export function MetricCard({ title, value, trend, subtitle, icon, className }: M
     return "text-muted-foreground";
   };
 
+  const getStatusColor = () => {
+    if (!status) return "";
+    if (status.type === "success") return "bg-green-600/10 text-green-600";
+    if (status.type === "warning") return "bg-red-600/10 text-red-600";
+    return "bg-muted text-muted-foreground";
+  };
+
   return (
     <Card className={cn("hover-elevate", className)}>
       <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
@@ -38,11 +50,18 @@ export function MetricCard({ title, value, trend, subtitle, icon, className }: M
         {icon && <div className="text-muted-foreground">{icon}</div>}
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-mono font-semibold">{value}</div>
+        <div className="flex items-center gap-2">
+          <div className="text-2xl font-mono font-semibold">{value}</div>
+          {status && (
+            <Badge variant="secondary" className={cn("text-xs", getStatusColor())}>
+              {status.label}
+            </Badge>
+          )}
+        </div>
         {trend && (
           <div className={cn("flex items-center gap-1 text-xs mt-1", getTrendColor())}>
             {getTrendIcon()}
-            <span>{Math.abs(trend.value)}%</span>
+            <span>{Math.abs(trend.value).toFixed(1)}%</span>
           </div>
         )}
         {subtitle && (
