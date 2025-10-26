@@ -167,6 +167,25 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 - **Fourth Metric Replacement**: Changed "Total Clientes" (926) to "% Clientes con Alta Principalidad" (62%) with YTD goal of 60%
 - **Visual Alignment Fix**: Applied consistent minimum height (170px) and flexbox layout to all MetricCard components to eliminate visual descuadre (misalignment)
 
+### Campaign System Realignment (October 26, 2025)
+- **Oportunidades del día**: Campaigns now directly aligned with dashboard goals
+  - Impulso Colocaciones - Créditos Personales (Saldos Activos)
+  - Captación DP Premium - Tasa Preferencial (Saldos Pasivos)
+  - Colocación Hipotecaria - Segmento Alto (Saldos Activos)
+  - Upselling Principalidad - Multi-producto (Alta Principalidad)
+  - Retención Pasivos - Inversiones Q2 (Contribución Neta)
+  - Cross-sell Tarjetas Premium (Contribución Neta)
+- **Enfoque Campaña Module**: Updated to match dashboard campaigns with explicit references to meta YTD values
+- **Coherence**: "Ver Todas las Campañas" button now leads to consistent campaign data
+- Each campaign description explicitly mentions which dashboard goal it supports
+
+### Portfolio Management Simplification (October 26, 2025)
+- **Reduced from 3 to 2 metrics** for clearer visual presentation:
+  - ✅ Margen Financiero Promedio (4.25%)
+  - ✅ Mora Mayor a 90 días (3.8%)
+  - ❌ Removed: % Clientes Principalidad Alta (now in main dashboard metrics)
+- **Improved layout**: Grid layout with gap-4 for better spacing and visual balance
+
 ### Component Updates
 - **MetricCard**: 
   - Added optional `subtitle` prop for YTD goal display

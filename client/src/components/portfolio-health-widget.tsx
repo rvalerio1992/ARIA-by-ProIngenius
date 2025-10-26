@@ -70,7 +70,7 @@ export function PortfolioHealthWidget({ metrics, className }: PortfolioHealthWid
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
               <div className="text-xs text-muted-foreground flex items-center gap-1">
                 <TrendingUp className="h-3 w-3" />
@@ -85,19 +85,6 @@ export function PortfolioHealthWidget({ metrics, className }: PortfolioHealthWid
             </div>
 
             <div className="space-y-1">
-              <div className="text-xs text-muted-foreground flex items-center gap-1">
-                <Users className="h-3 w-3" />
-                Principalidad Alta
-              </div>
-              <div className={cn("text-2xl font-mono font-bold", getPrincipalidadColor(clientesPrincipalidadAlta))}>
-                {clientesPrincipalidadAlta}%
-              </div>
-              <Badge variant="secondary" className={cn("text-xs", getPrincipalidadBgColor(clientesPrincipalidadAlta))}>
-                {clientesPrincipalidadAlta >= 60 ? "Óptimo" : clientesPrincipalidadAlta >= 45 ? "Bueno" : "Mejorar"}
-              </Badge>
-            </div>
-
-            <div className="col-span-2 space-y-1">
               <div className="text-xs text-muted-foreground flex items-center gap-1">
                 <AlertTriangle className="h-3 w-3" />
                 Mora Mayor a 90 días

@@ -76,61 +76,67 @@ export default function Dashboard() {
     phone: "+1 555 0123",
   };
 
-  // TODO: Remove mock data - Campaign opportunities
+  // Campañas alineadas con metas del dashboard
   const activeCampaigns = [
     {
       id: "camp-1",
-      title: "Renovación Anticipada DP Q1 2025",
-      portfolioPercentage: 18,
-      clientsAffected: 184,
-      totalValue: "$8.4M",
-      category: "Retención Masiva",
+      title: "Impulso Colocaciones - Créditos Personales",
+      portfolioPercentage: 22,
+      clientsAffected: 198,
+      totalValue: "$4.2M",
+      category: "Saldos Activos",
       portfolioImpact: "alto" as const,
+      metaRelacionada: "Saldos Activos"
     },
     {
       id: "camp-2",
-      title: "Campaña ESG - Inversión Sostenible",
-      portfolioPercentage: 11,
-      clientsAffected: 112,
-      totalValue: "$5.8M",
-      category: "Cross-sell",
-      portfolioImpact: "medio" as const,
+      title: "Captación DP Premium - Tasa Preferencial",
+      portfolioPercentage: 18,
+      clientsAffected: 167,
+      totalValue: "$6.8M",
+      category: "Saldos Pasivos",
+      portfolioImpact: "alto" as const,
+      metaRelacionada: "Saldos Pasivos"
     },
     {
       id: "camp-3",
-      title: "Refresh KYC Preventivo",
+      title: "Colocación Hipotecaria - Segmento Alto",
       portfolioPercentage: 15,
-      clientsAffected: 156,
-      totalValue: "$12.8M",
-      category: "Cumplimiento Preventivo",
+      clientsAffected: 142,
+      totalValue: "$8.5M",
+      category: "Saldos Activos",
       portfolioImpact: "alto" as const,
+      metaRelacionada: "Saldos Activos"
     },
     {
       id: "camp-4",
-      title: "TC Cashback - Alto Gasto Comercios",
-      portfolioPercentage: 9,
-      clientsAffected: 92,
-      totalValue: "$2.1M",
-      category: "Cross-sell",
+      title: "Upselling Principalidad - Multi-producto",
+      portfolioPercentage: 12,
+      clientsAffected: 124,
+      totalValue: "$5.2M",
+      category: "Alta Principalidad",
       portfolioImpact: "medio" as const,
+      metaRelacionada: "Alta Principalidad"
     },
     {
       id: "camp-5",
-      title: "Planificación Fiscal Premium",
-      portfolioPercentage: 7,
-      clientsAffected: 67,
-      totalValue: "$1.8M",
-      category: "Cross-sell",
+      title: "Retención Pasivos - Inversiones Q2",
+      portfolioPercentage: 14,
+      clientsAffected: 135,
+      totalValue: "$7.4M",
+      category: "Saldos Pasivos",
       portfolioImpact: "medio" as const,
+      metaRelacionada: "Contribución Neta"
     },
     {
       id: "camp-6",
-      title: "Retención - Riesgo Churn Detectado",
-      portfolioPercentage: 5,
-      clientsAffected: 48,
-      totalValue: "$3.2M",
-      category: "Retención",
+      title: "Cross-sell Tarjetas Premium",
+      portfolioPercentage: 8,
+      clientsAffected: 89,
+      totalValue: "$2.1M",
+      category: "Contribución Neta",
       portfolioImpact: "bajo" as const,
+      metaRelacionada: "Contribución Neta"
     },
   ];
 
