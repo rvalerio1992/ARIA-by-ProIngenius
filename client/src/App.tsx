@@ -9,8 +9,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/dashboard";
-import Portfolio from "@/pages/portfolio";
-import ClientDetail from "@/pages/client-detail";
 import Recommendations from "@/pages/recommendations";
 import Copilot from "@/pages/copilot";
 import Reports from "@/pages/reports";
@@ -24,8 +22,6 @@ function Router() {
       <Route path="/" component={Dashboard} />
       <Route path="/clients" component={Clients} />
       <Route path="/clients/:id" component={ClientVista360} />
-      <Route path="/enfoque" component={Portfolio} />
-      <Route path="/enfoque/:id" component={ClientDetail} />
       <Route path="/recommendations" component={Recommendations} />
       <Route path="/copilot" component={Copilot} />
       <Route path="/reports" component={Reports} />
