@@ -575,18 +575,22 @@ export default function ClientVista360() {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-4">
-                <div className="rounded-md bg-muted p-4 border">
-                  <pre className="text-xs whitespace-pre-wrap font-mono leading-relaxed" data-testid="text-system-prompt">
-                    {ARIA_SYSTEM_PROMPT}
-                  </pre>
-                </div>
-                <div className="mt-4 p-3 bg-accent/10 rounded-md border border-accent/20">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground">Nota:</span> Este mega prompt ha sido perfeccionado 
-                    iterativamente para generar análisis bancarios de clase mundial, combinando estructura profesional, 
-                    insights accionables y tono ejecutivo apropiado para relaciones Premium.
-                  </p>
-                </div>
+                {showPrompt && (
+                  <>
+                    <div className="rounded-md bg-muted p-4 border">
+                      <pre className="text-xs whitespace-pre-wrap font-mono leading-relaxed" data-testid="text-system-prompt">
+                        {ARIA_SYSTEM_PROMPT}
+                      </pre>
+                    </div>
+                    <div className="mt-4 p-3 bg-accent/10 rounded-md border border-accent/20">
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-semibold text-foreground">Nota:</span> Este mega prompt ha sido perfeccionado 
+                        iterativamente para generar análisis bancarios de clase mundial, combinando estructura profesional, 
+                        insights accionables y tono ejecutivo apropiado para relaciones Premium.
+                      </p>
+                    </div>
+                  </>
+                )}
               </CollapsibleContent>
             </Collapsible>
           </CardContent>

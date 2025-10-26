@@ -379,18 +379,22 @@ export default function Recommendations() {
               </Button>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-4">
-              <div className="rounded-md bg-muted p-4 border">
-                <pre className="text-xs whitespace-pre-wrap font-mono leading-relaxed" data-testid="text-campaign-prompt">
-                  {ARIA_CAMPAIGN_PROMPT}
-                </pre>
-              </div>
-              <div className="mt-4 p-3 bg-accent/10 rounded-md border border-accent/20">
-                <p className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Nota:</span> Este prompt especializado combina 
-                  segmentación inteligente, modelos predictivos y análisis de ROI para priorizar campañas con 
-                  el mayor potencial de impacto en el portafolio del ejecutivo.
-                </p>
-              </div>
+              {showPrompt && (
+                <>
+                  <div className="rounded-md bg-muted p-4 border">
+                    <pre className="text-xs whitespace-pre-wrap font-mono leading-relaxed" data-testid="text-campaign-prompt">
+                      {ARIA_CAMPAIGN_PROMPT}
+                    </pre>
+                  </div>
+                  <div className="mt-4 p-3 bg-accent/10 rounded-md border border-accent/20">
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-semibold text-foreground">Nota:</span> Este prompt especializado combina 
+                      segmentación inteligente, modelos predictivos y análisis de ROI para priorizar campañas con 
+                      el mayor potencial de impacto en el portafolio del ejecutivo.
+                    </p>
+                  </div>
+                </>
+              )}
             </CollapsibleContent>
           </Collapsible>
         </CardContent>
