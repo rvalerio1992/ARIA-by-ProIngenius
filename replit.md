@@ -159,8 +159,20 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 - Strict HTML allowlist: only `<p>`, `<strong>`, `<br>`, `<ul>`, `<ol>`, `<li>` tags permitted
 - XSS protection for all AI-generated responses
 
+### Dashboard Metrics Aesthetic Improvements (October 26, 2025)
+- **Percentage Formatting**: All percentages now display with only 1 decimal place for clarity (e.g., "5.5%" instead of "5.4917611250000007%")
+- **Status Badges**: Added visual status indicators on all financial metrics:
+  - "Sobre meta" (green badge) when exceeding YTD goal
+  - "Bajo meta" (red badge) when below YTD goal
+- **Fourth Metric Replacement**: Changed "Total Clientes" (926) to "% Clientes con Alta Principalidad" (62%) with YTD goal of 60%
+- **Visual Alignment Fix**: Applied consistent minimum height (170px) and flexbox layout to all MetricCard components to eliminate visual descuadre (misalignment)
+
 ### Component Updates
-- **MetricCard**: Added optional `subtitle` prop for YTD goal display
+- **MetricCard**: 
+  - Added optional `subtitle` prop for YTD goal display
+  - Added optional `status` prop with badge display (success/warning/neutral types)
+  - Implemented consistent height with flexbox layout (min-h-[170px])
+  - Automatic 1-decimal formatting for trend percentages (.toFixed(1))
 - **CampaignSummaryWidget**: Title updated to "Oportunidades del día"
 - **PortfolioHealthWidget**: Complete metric replacement with new financial indicators
 - **AppSidebar**: Updated menu item and footer with Victor Hugo Pavon name

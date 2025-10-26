@@ -46,16 +46,19 @@ export default function Dashboard() {
   const saldosPasivos = metrics?.captaciones_crc || 42196704;
   const saldosActivos = metrics?.colocaciones_crc || 10931313;
   const contribucionNeta = 45280500; // Valor inventado para Contribución Neta
+  const principalidadAlta = 62; // % de clientes con alta principalidad
   
   // Metas YTD (inventadas)
   const metaSaldosPasivos = 40000000;
   const metaSaldosActivos = 11000000;
   const metaContribucionNeta = 44000000;
+  const metaPrincipalidadAlta = 60; // Meta de 60% de clientes con alta principalidad
   
   // Calcular diferencias porcentuales con meta
   const diffPasivosPct = ((saldosPasivos - metaSaldosPasivos) / metaSaldosPasivos * 100);
   const diffActivosPct = ((saldosActivos - metaSaldosActivos) / metaSaldosActivos * 100);
   const diffContribucionPct = ((contribucionNeta - metaContribucionNeta) / metaContribucionNeta * 100);
+  const diffPrincipalidadPct = principalidadAlta - metaPrincipalidadAlta; // Diferencia absoluta en puntos porcentuales
 
   // TODO: Remove mock data
   const topClient = {
@@ -253,10 +256,16 @@ export default function Dashboard() {
           data-testid="metric-contribucion-neta"
         />
         <MetricCard
-          title="Clientes en Cartera"
-          value={statsLoading ? "..." : String(clientStats?.total || 926)}
-          icon={<Users className="h-4 w-4" />}
-          data-testid="metric-clientes"
+          title="% Clientes con Alta Principalidad"
+          value={`${principalidadAlta.toFixed(0)}%`}
+          trend={{ value: Math.abs(diffPrincipalidadPct), direction: diffPrincipalidadPct >= 0 ? "up" : "down" }}
+          status={{
+            label: diffPrincipalidadPct >= 0 ? "Sobre meta" : "Bajo meta",
+            type: diffPrincipalidadPct >= 0 ? "success" : "warning"
+          }}
+          subtitle={`Meta YTD: ${metaPrincipalidadAlta.toFixed(0)}%`}
+          icon={<Target className="h-4 w-4" />}
+          data-testid="metric-principalidad-alta"
         />
       </div>
 

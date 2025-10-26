@@ -42,30 +42,32 @@ export function MetricCard({ title, value, trend, subtitle, status, icon, classN
   };
 
   return (
-    <Card className={cn("hover-elevate", className)}>
+    <Card className={cn("hover-elevate min-h-[170px] flex flex-col", className)}>
       <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">
           {title}
         </CardTitle>
         {icon && <div className="text-muted-foreground">{icon}</div>}
       </CardHeader>
-      <CardContent>
-        <div className="flex items-center gap-2">
-          <div className="text-2xl font-mono font-semibold">{value}</div>
-          {status && (
-            <Badge variant="secondary" className={cn("text-xs", getStatusColor())}>
-              {status.label}
-            </Badge>
+      <CardContent className="flex-1 flex flex-col justify-between">
+        <div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="text-2xl font-mono font-semibold">{value}</div>
+            {status && (
+              <Badge variant="secondary" className={cn("text-xs", getStatusColor())}>
+                {status.label}
+              </Badge>
+            )}
+          </div>
+          {trend && (
+            <div className={cn("flex items-center gap-1 text-xs mt-1", getTrendColor())}>
+              {getTrendIcon()}
+              <span>{Math.abs(trend.value).toFixed(1)}%</span>
+            </div>
           )}
         </div>
-        {trend && (
-          <div className={cn("flex items-center gap-1 text-xs mt-1", getTrendColor())}>
-            {getTrendIcon()}
-            <span>{Math.abs(trend.value).toFixed(1)}%</span>
-          </div>
-        )}
         {subtitle && (
-          <div className="text-xs text-muted-foreground mt-1">
+          <div className="text-xs text-muted-foreground mt-2">
             {subtitle}
           </div>
         )}
