@@ -18,7 +18,7 @@ interface PortfolioHealthWidgetProps {
 export function PortfolioHealthWidget({ metrics, className }: PortfolioHealthWidgetProps) {
   // Nuevas métricas inventadas
   const margenFinanciero = 4.25; // Diferencia entre tasa pasiva promedio y tasa activa promedio (%)
-  const clientesPrincipalidadAlta = 62; // Porcentaje de clientes con principalidad alta
+  const clientesVinculacionAlta = 62; // Porcentaje de clientes con vinculación alta
   const clientesMora90 = 3.8; // Porcentaje de clientes con mora mayor a 90 días
   
   // Color thresholds para Margen Financiero: Green ≥4%, Yellow 3-3.99%, Red <3%
@@ -34,14 +34,14 @@ export function PortfolioHealthWidget({ metrics, className }: PortfolioHealthWid
     return "bg-red-600/10";
   };
 
-  // Color thresholds para Principalidad: Green ≥60%, Yellow 45-59%, Red <45%
-  const getPrincipalidadColor = (percentage: number) => {
+  // Color thresholds para Vinculación: Green ≥60%, Yellow 45-59%, Red <45%
+  const getVinculacionColor = (percentage: number) => {
     if (percentage >= 60) return "text-green-600";
     if (percentage >= 45) return "text-yellow-600";
     return "text-red-600";
   };
 
-  const getPrincipalidadBgColor = (percentage: number) => {
+  const getVinculacionBgColor = (percentage: number) => {
     if (percentage >= 60) return "bg-green-600/10";
     if (percentage >= 45) return "bg-yellow-600/10";
     return "bg-red-600/10";

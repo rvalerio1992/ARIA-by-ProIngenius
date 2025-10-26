@@ -164,7 +164,7 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 - **Status Badges**: Added visual status indicators on all financial metrics:
   - "Sobre meta" (green badge) when exceeding YTD goal
   - "Bajo meta" (red badge) when below YTD goal
-- **Fourth Metric Replacement**: Changed "Total Clientes" (926) to "% Clientes con Alta Principalidad" (62%) with YTD goal of 60%
+- **Fourth Metric Replacement**: Changed "Total Clientes" (926) to "% Clientes con Alta Vinculación" (62%) with YTD goal of 60%
 - **Visual Alignment Fix**: Applied consistent minimum height (170px) and flexbox layout to all MetricCard components to eliminate visual descuadre (misalignment)
 
 ### Campaign System Realignment (October 26, 2025)
@@ -172,12 +172,19 @@ This is a Premium Banking CRM platform designed for relationship managers handli
   - Impulso Colocaciones - Créditos Personales (Saldos Activos)
   - Colocación de Cuenta Alto Rendimiento - Clientes Alto Potencial Ahorradores (Saldos Pasivos)
   - Colocación Hipotecaria - Segmento Alto (Saldos Activos)
-  - Upselling Principalidad - Multi-producto (Alta Principalidad)
+  - Upselling Vinculación - Multi-producto (Alta Vinculación)
   - Retención Pasivos - Inversiones Q2 (Contribución Neta)
   - Cross-sell Tarjetas Premium (Contribución Neta)
 - **Enfoque Campaña Module**: Updated to match dashboard campaigns with explicit references to meta YTD values
 - **Coherence**: "Ver Todas las Campañas" button now leads to consistent campaign data
 - Each campaign description explicitly mentions which dashboard goal it supports
+
+### Terminology Update: Principalidad → Vinculación (October 26, 2025)
+- **Dashboard Fourth Metric**: Changed from "% Clientes con Alta Principalidad" to "% Clientes con Alta Vinculación" for better visual appeal
+- **Variable naming**: Updated all code references from `principalidadAlta` to `vinculacionAlta`
+- **Campaigns**: "Upselling Principalidad - Multi-producto" renamed to "Upselling Vinculación - Multi-producto"
+- **Category naming**: "Alta Principalidad" changed to "Alta Vinculación" throughout dashboard and campaign modules
+- **Maintains same metrics**: 62% actual vs 60% YTD goal (Sobre meta)
 
 ### Portfolio Management Simplification (October 26, 2025)
 - **Reduced from 3 to 2 metrics** for clearer visual presentation:
