@@ -95,6 +95,13 @@ export function ARIAAnalysisLoader({ clientName, onComplete, className }: ARIAAn
       setCurrentDimension((prev) => {
         const next = prev + 1;
         
+        if (next > dimensions.length) {
+          // Already finished, clean up
+          clearInterval(dimensionInterval);
+          clearInterval(progressInterval);
+          return prev;
+        }
+
         // Update dimension status
         setDimensionsState((dims) => 
           dims.map((dim, idx) => {
@@ -104,12 +111,25 @@ export function ARIAAnalysisLoader({ clientName, onComplete, className }: ARIAAn
           })
         );
 
-        if (next >= dimensions.length) {
-          clearInterval(dimensionInterval);
-          clearInterval(progressInterval);
-          setTimeout(onComplete, 800);
-          return prev;
+        // If this is the last dimension, schedule completion
+        if (next === dimensions.length) {
+          setTimeout(() => {
+            // Mark the last dimension as complete
+            setDimensionsState((dims) => 
+              dims.map((dim, idx) => ({
+                ...dim,
+                status: "complete" as const
+              }))
+            );
+            // Wait a bit to show all complete, then trigger onComplete
+            setTimeout(() => {
+              clearInterval(dimensionInterval);
+              clearInterval(progressInterval);
+              onComplete();
+            }, 500);
+          }, dimensionDuration * 0.7); // Show last as analyzing for a bit, then complete
         }
+        
         return next;
       });
     }, dimensionDuration);

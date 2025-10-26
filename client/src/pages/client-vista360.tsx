@@ -104,6 +104,7 @@ export default function ClientVista360() {
   const nuevosProductos30d = 2; // Productos adquiridos últimos 30 días
   const cancelaciones30d = 0; // Productos cancelados últimos 30 días
   
+  // Show loading skeleton while fetching data
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -124,27 +125,11 @@ export default function ClientVista360() {
     );
   }
   
-  // Show analysis loader while data is being fetched and before analysis is complete
-  if (isLoading || (clientData && showAnalysis && !analysisComplete)) {
-    // Wait for data to load before showing analysis
-    if (isLoading) {
-      return (
-        <div className="space-y-6">
-          <div className="flex items-center gap-4">
-            <Skeleton className="h-10 w-10" />
-            <div className="space-y-2">
-              <Skeleton className="h-8 w-64" />
-              <Skeleton className="h-4 w-96" />
-            </div>
-          </div>
-        </div>
-      );
-    }
-    
-    // Show ARIA analysis loader
+  // Show ARIA analysis loader after data is loaded but before showing Vista 360
+  if (clientData && showAnalysis) {
     return (
       <ARIAAnalysisLoader
-        clientName={clientData?.cliente_id || id || "Cliente"}
+        clientName={clientData.cliente_id}
         onComplete={handleAnalysisComplete}
       />
     );
