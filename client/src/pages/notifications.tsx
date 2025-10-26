@@ -277,7 +277,7 @@ export default function Notifications() {
                   <div className="flex items-start gap-3 flex-1">
                     <div className="mt-1">{notification.icon}</div>
                     <div className="flex-1">
-                      <CardTitle className="text-base mb-1 flex items-center gap-2">
+                      <CardTitle className="text-base mb-1 flex items-center gap-2" data-testid={`text-title-${notification.id}`}>
                         {notification.title}
                         <Badge 
                           variant="outline" 
@@ -319,7 +319,7 @@ export default function Notifications() {
                     <div className="flex items-start gap-3 flex-1">
                       <div className="mt-1">{notification.icon}</div>
                       <div className="flex-1">
-                        <CardTitle className="text-base mb-1 flex items-center gap-2">
+                        <CardTitle className="text-base mb-1 flex items-center gap-2" data-testid={`text-title-${notification.id}`}>
                           {notification.title}
                           <Badge 
                             variant="outline" 
