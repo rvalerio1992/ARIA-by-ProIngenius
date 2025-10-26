@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
 import { MetricCard } from "@/components/metric-card";
-import { ClientProfileCard } from "@/components/client-profile-card";
-import { ActivityTimeline } from "@/components/activity-timeline";
-import { PortfolioHealthWidget } from "@/components/portfolio-health-widget";
-import { CampaignSummaryWidget } from "@/components/campaign-summary-widget";
+import { FinancialMetricsWidget } from "@/components/financial-metrics-widget";
+import { ARIAActionButtons } from "@/components/aria-action-buttons";
 import { ARIAPortfolioAnalysisLoader } from "@/components/aria-portfolio-analysis-loader";
-import { DollarSign, Users, TrendingUp, Target, Sparkles } from "lucide-react";
+import { DollarSign, TrendingUp, Target, Sparkles, Percent, AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
-
-// TODO: Remove mock data
-import avatar1 from "@assets/generated_images/Hispanic_male_executive_headshot_11740d94.png";
-import avatar2 from "@assets/generated_images/Asian_female_executive_headshot_f90e7ca6.png";
 
 interface MetricsData {
   captaciones_crc: number;
@@ -32,7 +25,6 @@ interface ClientStats {
 }
 
 export default function Dashboard() {
-  const { toast } = useToast();
   const [showAnalysis, setShowAnalysis] = useState(true);
   
   // Fetch real metrics from API
@@ -81,150 +73,33 @@ export default function Dashboard() {
   const diffContribucionPct = ((contribucionNeta - metaContribucionNeta) / metaContribucionNeta * 100);
   const diffVinculacionPct = vinculacionAlta - metaVinculacionAlta; // Diferencia absoluta en puntos porcentuales
 
-  // TODO: Remove mock data
-  const topClient = {
-    id: "cl-1",
-    name: "Roberto Fernández",
-    avatar: avatar1,
-    segment: "Ultra Premium",
-    industry: "Tecnología",
-    aum: "$3.2M",
-    lastInteraction: "Hace 2 días - Llamada",
-    sentiment: "positive" as const,
-    riskLevel: "bajo" as const,
-    kycStatus: "compliant" as const,
-    email: "roberto.fernandez@email.com",
-    phone: "+1 555 0123",
-  };
-
-  // Campañas alineadas con metas del dashboard
-  const activeCampaigns = [
+  // Financial metrics for the portfolio
+  const financialMetrics = [
     {
-      id: "camp-1",
-      title: "Impulso Colocaciones - Créditos Personales",
-      portfolioPercentage: 22,
-      clientsAffected: 198,
-      totalValue: "$4.2M",
-      category: "Saldos Activos",
-      portfolioImpact: "alto" as const,
-      metaRelacionada: "Saldos Activos"
+      label: "Tasa Pasiva Ponderada",
+      value: "5.2%",
+      icon: <Percent className="h-4 w-4" />,
+      status: "good" as const
     },
     {
-      id: "camp-2",
-      title: "Colocación de Cuenta Alto Rendimiento - Clientes Alto Potencial Ahorradores",
-      portfolioPercentage: 18,
-      clientsAffected: 167,
-      totalValue: "$6.8M",
-      category: "Saldos Pasivos",
-      portfolioImpact: "alto" as const,
-      metaRelacionada: "Saldos Pasivos"
+      label: "Tasa Activa Ponderada",
+      value: "9.8%",
+      icon: <Percent className="h-4 w-4" />,
+      status: "good" as const
     },
     {
-      id: "camp-3",
-      title: "Colocación Hipotecaria - Segmento Alto",
-      portfolioPercentage: 15,
-      clientsAffected: 142,
-      totalValue: "$8.5M",
-      category: "Saldos Activos",
-      portfolioImpact: "alto" as const,
-      metaRelacionada: "Saldos Activos"
+      label: "Margen Financiero Promedio",
+      value: "4.6%",
+      icon: <TrendingUp className="h-4 w-4" />,
+      status: "good" as const
     },
     {
-      id: "camp-4",
-      title: "Upselling Vinculación - Multi-producto",
-      portfolioPercentage: 12,
-      clientsAffected: 124,
-      totalValue: "$5.2M",
-      category: "Alta Vinculación",
-      portfolioImpact: "medio" as const,
-      metaRelacionada: "Alta Vinculación"
-    },
-    {
-      id: "camp-5",
-      title: "Retención Pasivos - Inversiones Q2",
-      portfolioPercentage: 14,
-      clientsAffected: 135,
-      totalValue: "$7.4M",
-      category: "Saldos Pasivos",
-      portfolioImpact: "medio" as const,
-      metaRelacionada: "Contribución Neta"
-    },
-    {
-      id: "camp-6",
-      title: "Cross-sell Tarjetas Premium",
-      portfolioPercentage: 8,
-      clientsAffected: 89,
-      totalValue: "$2.1M",
-      category: "Contribución Neta",
-      portfolioImpact: "bajo" as const,
-      metaRelacionada: "Contribución Neta"
+      label: "Mora > 90 días",
+      value: "3.8%",
+      icon: <AlertTriangle className="h-4 w-4" />,
+      status: "warning" as const
     },
   ];
-
-  // TODO: Remove mock data
-  const recentActivity = [
-    {
-      id: "1",
-      type: "call" as const,
-      title: "Llamada con Ana Chen",
-      description: "Discusión sobre nuevas oportunidades de inversión en mercados emergentes",
-      timestamp: "Hace 2 horas",
-      actor: "Victor Hugo Pavon",
-    },
-    {
-      id: "2",
-      type: "meeting" as const,
-      title: "Reunión trimestral - Johnson Inc",
-      description: "Revisión de cartera y ajuste de estrategia para Q2 2025",
-      timestamp: "Hace 1 día",
-      actor: "Carlos Ruiz",
-    },
-    {
-      id: "3",
-      type: "email" as const,
-      title: "Propuesta enviada a Martínez Group",
-      description: "Información sobre nuevos fondos ESG y productos sustentables",
-      timestamp: "Hace 3 días",
-      actor: "Victor Hugo Pavon",
-    },
-  ];
-
-  // Portfolio metrics based on real client stats
-  const totalClients = clientStats?.total || 926;
-  const portfolioMetrics = [
-    { 
-      label: "Sector Público", 
-      value: clientStats?.sectorPublico || 312, 
-      total: totalClients, 
-      status: "good" as const 
-    },
-    { 
-      label: "Sector Privado", 
-      value: clientStats?.sectorPrivado || 614, 
-      total: totalClients, 
-      status: "good" as const 
-    },
-    { 
-      label: "Requieren Seguimiento", 
-      value: Math.round(totalClients * 0.09), 
-      total: totalClients, 
-      status: "warning" as const 
-    },
-    { 
-      label: "En Riesgo Alto", 
-      value: Math.round(totalClients * 0.02), 
-      total: totalClients, 
-      status: "critical" as const 
-    },
-  ];
-
-  const handleContact = (type: "email" | "phone") => {
-    console.log("Contact via:", type);
-    toast({
-      title: type === "email" ? "Email Abierto" : "Llamada Iniciada",
-      description: `Se ha abierto ${type === "email" ? "tu cliente de email" : "el marcador telefónico"}.`,
-    });
-  };
 
   return (
     <div className="space-y-6">
@@ -296,20 +171,17 @@ export default function Dashboard() {
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-6">
-          <CampaignSummaryWidget campaigns={activeCampaigns} />
+      <FinancialMetricsWidget metrics={financialMetrics} />
 
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Cliente Destacado</h2>
-            <ClientProfileCard client={topClient} onContact={handleContact} />
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <PortfolioHealthWidget metrics={portfolioMetrics} />
-          <ActivityTimeline items={recentActivity} />
-        </div>
+      <div>
+        <h2 className="text-2xl font-semibold mb-2 flex items-center gap-2">
+          <Sparkles className="h-6 w-6 text-accent" />
+          Explora con ARIA
+        </h2>
+        <p className="text-muted-foreground mb-6">
+          ARIA ha identificado insights accionables en tu cartera. Elige cómo quieres profundizar:
+        </p>
+        <ARIAActionButtons />
       </div>
     </div>
   );
