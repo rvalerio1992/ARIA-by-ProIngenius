@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
 import { MetricCard } from "@/components/metric-card";
 import { FinancialMetricsWidget } from "@/components/financial-metrics-widget";
 import { ARIAActionButtons } from "@/components/aria-action-buttons";
-import { ARIAPortfolioAnalysisLoader } from "@/components/aria-portfolio-analysis-loader";
 import { DollarSign, TrendingUp, Target, Sparkles, Percent, AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
@@ -25,8 +23,6 @@ interface ClientStats {
 }
 
 export default function Dashboard() {
-  const [showAnalysis, setShowAnalysis] = useState(true);
-  
   // Fetch real metrics from API
   const { data: metrics, isLoading: metricsLoading } = useQuery<MetricsData>({
     queryKey: ['/api/metrics'],
@@ -36,24 +32,6 @@ export default function Dashboard() {
   const { data: clientStats, isLoading: statsLoading } = useQuery<ClientStats>({
     queryKey: ['/api/clients/stats'],
   });
-
-  // Reset analysis on mount
-  useEffect(() => {
-    setShowAnalysis(true);
-  }, []);
-
-  const handleAnalysisComplete = () => {
-    setTimeout(() => {
-      setShowAnalysis(false);
-    }, 300);
-  };
-
-  // Show ARIA analysis loader on initial load
-  if (!metricsLoading && !statsLoading && metrics && clientStats && showAnalysis) {
-    return (
-      <ARIAPortfolioAnalysisLoader onComplete={handleAnalysisComplete} />
-    );
-  }
 
   // Calculated values for USD (usando los valores existentes como USD)
   const saldosPasivos = metrics?.captaciones_crc || 42196704;
