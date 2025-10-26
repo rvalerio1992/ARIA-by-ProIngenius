@@ -170,7 +170,7 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 ### Campaign System Realignment (October 26, 2025)
 - **Oportunidades del día**: Campaigns now directly aligned with dashboard goals
   - Impulso Colocaciones - Créditos Personales (Saldos Activos)
-  - Captación DP Premium - Tasa Preferencial (Saldos Pasivos)
+  - Colocación de Cuenta Alto Rendimiento - Clientes Alto Potencial Ahorradores (Saldos Pasivos)
   - Colocación Hipotecaria - Segmento Alto (Saldos Activos)
   - Upselling Principalidad - Multi-producto (Alta Principalidad)
   - Retención Pasivos - Inversiones Q2 (Contribución Neta)

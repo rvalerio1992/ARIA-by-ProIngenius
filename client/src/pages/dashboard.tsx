@@ -90,7 +90,7 @@ export default function Dashboard() {
     },
     {
       id: "camp-2",
-      title: "Captación DP Premium - Tasa Preferencial",
+      title: "Colocación de Cuenta Alto Rendimiento - Clientes Alto Potencial Ahorradores",
       portfolioPercentage: 18,
       clientsAffected: 167,
       totalValue: "$6.8M",

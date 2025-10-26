@@ -28,8 +28,8 @@ export default function Recommendations() {
     },
     {
       id: "camp-2",
-      title: "Captación DP Premium - Tasa Preferencial",
-      description: "167 clientes con saldos líquidos en cuentas corrientes. Ofrecer depósitos a plazo con tasa preferencial 6.5% para incrementar Saldos Pasivos y mantener ventaja vs meta YTD.",
+      title: "Colocación de Cuenta Alto Rendimiento - Clientes Alto Potencial Ahorradores",
+      description: "167 clientes ahorradores con alto potencial identificados. Ofrecer cuentas de alto rendimiento con tasa preferencial 6.5% para incrementar Saldos Pasivos y mantener ventaja vs meta YTD.",
       portfolioPercentage: 18,
       clientsAffected: 167,
       totalValue: "$6.8M",
@@ -37,8 +37,8 @@ export default function Recommendations() {
       portfolioImpact: "alto" as const,
       dimensions: [
         { name: "Meta Dashboard", icon: Target, description: "Saldos Pasivos: $42.2M / Meta: $40.0M · Mantener ventaja" },
-        { name: "Comportamiento transaccional", icon: CreditCard, description: "Saldos líquidos promedio $40K+ · Sin rendimiento" },
-        { name: "Insights predictivos", icon: TrendingUp, description: "Propensión captación 78% · Sensible a tasas" },
+        { name: "Comportamiento transaccional", icon: CreditCard, description: "Perfil ahorrador · Saldos líquidos promedio $40K+" },
+        { name: "Insights predictivos", icon: TrendingUp, description: "Alto potencial ahorro · Propensión captación 78%" },
         { name: "Comparativa de mercado", icon: Globe, description: "Tasa competitiva vs mercado · Ventaja 0.8pp" },
       ],
     },
