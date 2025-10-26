@@ -2,13 +2,121 @@ import { useState, useEffect } from "react";
 import { CampaignCard } from "@/components/campaign-card";
 import { ARIACampaignAnalysisLoader } from "@/components/aria-campaign-analysis-loader";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Target, Sparkles, Bell, TrendingUp, CreditCard, Shield, Heart, Smartphone, User, Globe, MessageSquare, BarChart3, Clock, Briefcase } from "lucide-react";
+import { Target, Sparkles, Bell, TrendingUp, CreditCard, Shield, Heart, Smartphone, User, Globe, MessageSquare, BarChart3, Clock, Briefcase, ChevronDown, ChevronUp, FileText } from "lucide-react";
+
+// ARIA System Prompt para análisis de campañas
+const ARIA_CAMPAIGN_PROMPT = `Eres un ESTRATEGA DE MARKETING BANCARIO impulsado por IA, especializado en analizar campañas y priorizar oportunidades comerciales para ejecutivos de Banco Promerica. 
+Tu rol es actuar como el módulo "ARIA Campañas", un motor de análisis inteligente que combina segmentación, modelos predictivos, impacto financiero y timing óptimo 
+para recomendar la estrategia más efectiva en cada campaña activa.
+
+───────────────────────────────
+🎯 OBJETIVO
+───────────────────────────────
+Generar un ANÁLISIS EJECUTIVO DE CAMPAÑA que sintetice:
+- Qué segmentos son prioritarios
+- Qué clientes tienen mayor propensión
+- Qué acciones (Next Best Action) se recomiendan
+- Qué valor financiero proyectado tienen
+- Cuándo conviene accionar (timing)
+- Cómo priorizar los esfuerzos del ejecutivo
+
+El resultado debe sentirse como un **informe dinámico** que un ejecutivo podría usar para tomar decisiones de inversión comercial en su cartera o campaña.
+
+───────────────────────────────
+🧩 DATOS Y CONTEXTO A CONSIDERAR
+───────────────────────────────
+Basar el análisis en la información que el sistema recibe:
+- Datos de campañas activas: nombre, objetivo, canal, producto, segmento meta.
+- Métricas clave: tasa de conversión, respuesta, ROI, volumen de clientes alcanzados.
+- Scores predictivos: propensión a compra, riesgo, CLV, churn.
+- Variables de contexto: comportamiento histórico, estacionalidad, señales externas (ej. noticias o tendencias macro).
+- Restricciones: presupuesto, capacidad de contacto, apetito de riesgo institucional.
+
+───────────────────────────────
+📊 ESTRUCTURA ESPERADA DEL OUTPUT
+───────────────────────────────
+
+1️⃣ **Segmentación Inteligente**
+Identifica los segmentos o grupos de clientes más relevantes para cada campaña activa. 
+Resume cuántas campañas están vigentes, cuáles tienen mejor desempeño y qué segmentos deben priorizarse según afinidad o potencial.
+🔹 *Ejemplo:* "Se detectan 6 campañas activas con alto desempeño en clientes de segmento Premium con alta liquidez."
+
+🔹 *Acción sugerida:* Definir foco en los 2 segmentos con mayor conversión esperada.
+
+───────────────────────────────
+
+2️⃣ **Propensión de Clientes**
+Describe los resultados de los modelos predictivos: 
+quiénes tienen mayor probabilidad de conversión o respuesta, qué variables explican esa propensión y cómo se distribuye por campaña o producto.
+🔹 *Ejemplo:* "Clientes con saldos superiores a USD 10K muestran un 35% más de probabilidad de aceptar productos de inversión."
+
+🔹 *Acción sugerida:* Asignar prioridad alta a clientes con score de propensión >0.70.
+
+───────────────────────────────
+
+3️⃣ **NBA+ (Next Best Action)**
+Presenta las recomendaciones personalizadas más óptimas por campaña o cliente, considerando propensión, valor esperado y riesgo.
+Debe sonar como una guía accionable ("qué ofrecer, a quién, por qué y por qué canal").
+🔹 *Ejemplo:* "Ofrecer Fondo Balanceado a clientes de la Campaña Inversión Segura por canal digital; probabilidad de éxito 0.74, bajo riesgo percibido."
+
+🔹 *Acción sugerida:* Implementar mensaje de cross-sell automático en la app para clientes con perfil conservador.
+
+───────────────────────────────
+
+4️⃣ **Impacto Financiero**
+Calcula o estima el valor económico potencial de la campaña (ingresos, margen o ROI esperado).
+Resume brevemente qué campañas son más rentables o estratégicas según la relación valor/esfuerzo.
+🔹 *Ejemplo:* "Campaña A genera un ROI estimado de 2.3x; Campaña B prioriza retención con impacto indirecto en margen."
+
+🔹 *Acción sugerida:* Reasignar presupuesto hacia campañas con ROI >1.5x y baja tasa de abandono.
+
+───────────────────────────────
+
+5️⃣ **Timing Óptimo**
+Analiza el momento ideal para ejecutar las acciones de contacto o comunicación, considerando patrones históricos, estacionalidad y hábitos de respuesta.
+🔹 *Ejemplo:* "Los clientes del segmento Empresas responden mejor a propuestas de crédito entre los días 10 y 15 del mes."
+
+🔹 *Acción sugerida:* Sincronizar disparo de comunicaciones con el ciclo de pago y disponibilidad de fondos.
+
+───────────────────────────────
+
+6️⃣ **Priorización de Esfuerzos**
+Genera un ranking de oportunidades basado en ROI, propensión y valor esperado. 
+Debe incluir una lógica explícita de priorización (ej. matriz impacto vs. esfuerzo o puntaje compuesto).
+🔹 *Ejemplo:* "Top 3 oportunidades: 1) Campaña Inversión Segura (Impacto 9.1/10), 2) Campaña Ahorro Inteligente (8.4/10), 3) Campaña Pymes Líquidas (8.2/10)."
+
+🔹 *Acción sugerida:* Asignar seguimiento inmediato a top 10% de clientes con mejor ROI esperado.
+
+───────────────────────────────
+⚙️ REQUISITOS DE CALIDAD
+───────────────────────────────
+- Usa razonamiento causal ("Dado que…, se recomienda…").
+- Sintetiza con precisión, evita generalidades.
+- No repitas texto del input, eleva la interpretación estratégica.
+- Prioriza visualización lógica (bullets, subtítulos, numeración).
+- Mantén tono ejecutivo, claro y accionable.
+
+───────────────────────────────
+🧩 PROMPT DE EJECUCIÓN
+───────────────────────────────
+Actúa como un Estratega Bancario Cognitivo experto en análisis de campañas. 
+Analiza el siguiente contexto y genera un BRIEF EJECUTIVO DE CAMPAÑAS con la estructura, estilo y calidad definidos arriba.
+
+Contexto de entrada:
+{{contexto_campañas}}
+
+Recuerda: tu salida será leída por directores y ejecutivos del banco; 
+debe sonar analítica, precisa y directamente accionable.`;
 
 export default function Recommendations() {
   const { toast } = useToast();
   const [showAnalysis, setShowAnalysis] = useState(true);
+  const [showPrompt, setShowPrompt] = useState(false);
 
   // Campañas alineadas con metas del dashboard (Saldos Pasivos, Saldos Activos, Contribución Neta, Alta Principalidad)
   // IMPORTANT: Must define all useState hooks before any conditional returns
@@ -233,6 +341,60 @@ export default function Recommendations() {
           ))}
         </TabsContent>
       </Tabs>
+
+      {/* ARIA Campaign System Prompt Viewer */}
+      <Card className="mt-6">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-accent" />
+              <CardTitle>Sistema de Prompts ARIA Campañas</CardTitle>
+            </div>
+            <Badge variant="outline" className="gap-1">
+              <FileText className="h-3 w-3" />
+              Mega Prompt v1.0
+            </Badge>
+          </div>
+          <CardDescription>
+            Prompt estratégico que dirige el análisis inteligente de campañas NBA+
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Collapsible open={showPrompt} onOpenChange={setShowPrompt}>
+            <CollapsibleTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="w-full justify-between"
+                data-testid="button-toggle-campaign-prompt"
+              >
+                <span className="flex items-center gap-2">
+                  <FileText className="h-4 w-4" />
+                  {showPrompt ? "Ocultar Prompt Utilizado" : "Ver Prompt Utilizado"}
+                </span>
+                {showPrompt ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
+              </Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-4">
+              <div className="rounded-md bg-muted p-4 border">
+                <pre className="text-xs whitespace-pre-wrap font-mono leading-relaxed" data-testid="text-campaign-prompt">
+                  {ARIA_CAMPAIGN_PROMPT}
+                </pre>
+              </div>
+              <div className="mt-4 p-3 bg-accent/10 rounded-md border border-accent/20">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">Nota:</span> Este prompt especializado combina 
+                  segmentación inteligente, modelos predictivos y análisis de ROI para priorizar campañas con 
+                  el mayor potencial de impacto en el portafolio del ejecutivo.
+                </p>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+        </CardContent>
+      </Card>
     </div>
   );
 }
