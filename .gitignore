@@ -1,6 +1,105 @@
-node_modules
-dist
+# Dependencias
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+
+# OS
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
+rag_cartera/*.sqlite3
+server/api_rag/rag_cartera/*.sqlite3
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+.temp/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Lock files (opcional, algunos equipos los commitean)
+# package-lock.json
+# uv.lock
+
+# Migrations generadas
+migrations/
+drizzle/
+
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv
+__pypackages__/
+
+# Replit específico
+.replit
+replit.nix
+.breakpoints
+
+# Local storage y caché
+.local/
+.npm/
+.yarn/
+.pnp.*
+
+# Coverage y testing
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+*.cover
+
+# Archivos específicos de Windows
+$RECYCLE.BIN/
+*.lnk
+
+# Certificados y claves (seguridad)
+*.pem
+*.key
+*.cert
+*.crt
+
+# Archivos grandes de datos (opcional)
+# *.csv
+# *.xlsx
+# *.jsonl
+
+# Backups
+*.bak
+*.backup
+*~

@@ -217,25 +217,25 @@ async def get_metrics_summary():
 async def startup_event():
     """Evento de inicio de la aplicación"""
     print("=" * 60)
-    print("🚀 Iniciando API RAG - Gemelo 1.1 Premium")
+    print("Iniciando API RAG - ARIA by ProIngenius")
     print("=" * 60)
-    print(f"OpenAI API Key: {'✓ Configurada' if os.getenv('AI_INTEGRATIONS_OPENAI_API_KEY') else '✗ NO ENCONTRADA'}")
+    print(f"OpenAI API Key: {'Configurada' if os.getenv('AI_INTEGRATIONS_OPENAI_API_KEY') else 'NO ENCONTRADA'}")
     print("=" * 60)
 
 @app.on_event("shutdown")
 async def shutdown_event():
     """Evento de cierre de la aplicación"""
-    print("🛑 Cerrando API RAG...")
+    print("Cerrando API RAG...")
 
 if __name__ == "__main__":
     import uvicorn
     
     # Configuración del servidor
-    host = "0.0.0.0"
+    host = "127.0.0.1"  # Cambio para Windows local
     port = 8000
     
-    print(f"\n📡 Servidor disponible en: http://{host}:{port}")
-    print(f"📖 Documentación interactiva: http://{host}:{port}/docs\n")
+    print(f"\nServidor disponible en: http://{host}:{port}")
+    print(f"Documentacion interactiva: http://{host}:{port}/docs\n")
     
     uvicorn.run(
         "main:app",

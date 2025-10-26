@@ -12,22 +12,22 @@ if __name__ == "__main__":
     has_key = len(api_key) > 20
     
     # Configuración del servidor
-    host = "0.0.0.0"
+    host = "127.0.0.1"  # Cambio para Windows local
     port = 8000
     
     print("\n" + "=" * 60)
-    print("🚀 Iniciando API RAG - Gemelo 1.1 Premium")
+    print("Iniciando API RAG - ARIA by ProIngenius")
     print("=" * 60)
-    print(f"📡 Servidor: http://{host}:{port}")
-    print(f"📖 Docs: http://{host}:{port}/docs")
-    print(f"🔍 Health: http://{host}:{port}/health")
-    print(f"🔑 OpenAI Key: {'✓ Configurada' if has_key else '✗ No configurada'}")
+    print(f"Servidor: http://{host}:{port}")
+    print(f"Docs: http://{host}:{port}/docs")
+    print(f"Health: http://{host}:{port}/health")
+    print(f"OpenAI Key: {'Configurada' if has_key else 'No configurada'}")
     
     if not has_key:
-        print("\n⚠️  ADVERTENCIA: AI_INTEGRATIONS_OPENAI_API_KEY no encontrada")
-        print("   • Endpoints de métricas (/metrics/*) funcionarán normalmente")
-        print("   • Endpoint RAG (/ask) retornará error hasta configurar la key")
-        print("   • Configura el secret en Replit para habilitar RAG completo")
+        print("\nADVERTENCIA: AI_INTEGRATIONS_OPENAI_API_KEY no encontrada")
+        print("   - Endpoints de metricas (/metrics/*) funcionaran normalmente")
+        print("   - Endpoint RAG (/ask) retornara error hasta configurar la key")
+        print("   - Configura la key en .env para habilitar RAG completo")
     
     print("=" * 60 + "\n")
     
