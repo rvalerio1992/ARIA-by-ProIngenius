@@ -269,7 +269,7 @@ export default function ClientVista360() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold" data-testid="text-ingreso">
-              ${(perfil.ingreso * 0.0018).toFixed(0)}
+              ${perfil.ingreso.toLocaleString('en-US', { maximumFractionDigits: 0 })}
             </div>
             <p className="text-xs text-muted-foreground">USD/mes (aprox)</p>
           </CardContent>

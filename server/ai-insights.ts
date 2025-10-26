@@ -36,7 +36,7 @@ DATOS FINANCIEROS:
 PERFIL SOCIODEMOGRÁFICO:
 - Edad: ${client.perfil.edad} años
 - Sexo: ${client.perfil.sexo}
-- Ingreso mensual: ₡${client.perfil.ingreso.toFixed(2)}
+- Ingreso mensual: $${client.perfil.ingreso.toLocaleString('en-US', { maximumFractionDigits: 0 })} USD
 - Antigüedad laboral: ${client.perfil.antiguedad_laboral} meses
 
 TAREA:
@@ -126,7 +126,7 @@ function generateBasicInsights(client: Client): ClientInsights {
       productos_nba: esSectorPublico 
         ? ['Cuenta de ahorro premium', 'Seguro de vida', 'Plan de pensiones']
         : ['Tarjeta de crédito platinum', 'Inversión en fondos', 'Crédito personal'],
-      cross_sell: `Considerando ingreso de ₡${client.perfil.ingreso.toFixed(0)}, perfil óptimo para productos de ${ingresoCategoria === 'alto' ? 'inversión y seguros premium' : 'ahorro y protección básica'}.`,
+      cross_sell: `Considerando ingreso de $${client.perfil.ingreso.toLocaleString('en-US', { maximumFractionDigits: 0 })} USD, perfil óptimo para productos de ${ingresoCategoria === 'alto' ? 'inversión y seguros premium' : 'ahorro y protección básica'}.`,
       momentos_vida: client.perfil.edad > 55 ? 'Próximo a jubilación - plan de retiro recomendado' : client.perfil.edad < 35 ? 'Inicio de carrera - productos de ahorro y crédito' : 'Consolidación patrimonial - inversiones a mediano plazo'
     },
     alertas_riesgos: {

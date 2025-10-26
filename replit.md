@@ -9,7 +9,11 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 - Preferred communication style: Simple, everyday language.
 - Executive user name: Victor Hugo Pavon (used throughout the application)
 - Currency: USD ($) for all monetary displays
+  - Client income ("Ingreso Mensual") displays in USD without conversion
+  - Consistent formatting between income card and Snapshot Ejecutivo (both show same value, e.g., $5,395)
+  - All AI-generated insights use USD currency format
 - Language: Spanish for all user-facing content
+- Number formatting: Percentages show 1 decimal place for clarity
 
 ## System Architecture
 
