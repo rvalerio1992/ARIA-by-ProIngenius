@@ -117,10 +117,15 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild isActive={location === "/notifications"}>
                   <Link href="/notifications" data-testid="link-notifications">
                     <Bell className="h-4 w-4" />
-                    <span>Notificaciones</span>
+                    <span className="flex items-center gap-2">
+                      Notificaciones
+                      <Badge variant="destructive" className="text-[10px] px-1 py-0">
+                        16
+                      </Badge>
+                    </span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

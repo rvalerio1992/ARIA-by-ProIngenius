@@ -15,6 +15,7 @@ import Reports from "@/pages/reports";
 import Settings from "@/pages/settings";
 import Clients from "@/pages/clients";
 import ClientVista360 from "@/pages/client-vista360";
+import Notifications from "@/pages/notifications";
 
 function Router() {
   return (
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/copilot" component={Copilot} />
       <Route path="/reports" component={Reports} />
       <Route path="/settings" component={Settings} />
+      <Route path="/notifications" component={Notifications} />
       <Route component={NotFound} />
     </Switch>
   );
