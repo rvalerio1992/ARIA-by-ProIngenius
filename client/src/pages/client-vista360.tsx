@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useParams } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,6 +23,7 @@ import {
 import { Link } from "wouter";
 import { MCCConsumptionChart } from "@/components/mcc-consumption-chart";
 import { CardUsageHistoryChart } from "@/components/card-usage-history-chart";
+import { ARIAAnalysisLoader } from "@/components/aria-analysis-loader";
 
 interface ClientProfile {
   sexo: string;
@@ -65,6 +67,8 @@ interface ClientWithInsights {
 
 export default function ClientVista360() {
   const { id } = useParams();
+  const [showAnalysis, setShowAnalysis] = useState(true);
+  const [analysisComplete, setAnalysisComplete] = useState(false);
   
   // Fetch client details with insights
   const { data: clientData, isLoading, error } = useQuery<ClientWithInsights>({
@@ -80,6 +84,19 @@ export default function ClientVista360() {
     },
     enabled: !!id,
   });
+  
+  // Reset analysis state when client changes
+  useEffect(() => {
+    setShowAnalysis(true);
+    setAnalysisComplete(false);
+  }, [id]);
+  
+  const handleAnalysisComplete = () => {
+    setAnalysisComplete(true);
+    setTimeout(() => {
+      setShowAnalysis(false);
+    }, 300);
+  };
   
   // Mock data for additional metrics (these would come from API in production)
   const nivelRiesgo = "Bajo"; // Bajo, Medio, Alto
@@ -104,6 +121,32 @@ export default function ClientVista360() {
           <Skeleton className="h-64" />
         </div>
       </div>
+    );
+  }
+  
+  // Show analysis loader while data is being fetched and before analysis is complete
+  if (isLoading || (clientData && showAnalysis && !analysisComplete)) {
+    // Wait for data to load before showing analysis
+    if (isLoading) {
+      return (
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <Skeleton className="h-10 w-10" />
+            <div className="space-y-2">
+              <Skeleton className="h-8 w-64" />
+              <Skeleton className="h-4 w-96" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    // Show ARIA analysis loader
+    return (
+      <ARIAAnalysisLoader
+        clientName={clientData?.cliente_id || id || "Cliente"}
+        onComplete={handleAnalysisComplete}
+      />
     );
   }
   

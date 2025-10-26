@@ -202,3 +202,47 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 - **CampaignSummaryWidget**: Title updated to "Oportunidades del día"
 - **PortfolioHealthWidget**: Complete metric replacement with new financial indicators
 - **AppSidebar**: Updated menu item and footer with Victor Hugo Pavon name
+
+### Navigation Restructure (October 26, 2025)
+- **Menu Consolidation**: 
+  - Renamed "Cartera Clientes" to "Enfoque 1:1" 
+  - Removed redundant "Enfoque 1:1" menu item (previously at /enfoque)
+  - Added AI-powered badge to new "Enfoque 1:1" menu item
+  - Cleaned up unused routes: /enfoque, /enfoque/:id
+  - Removed unused page components: portfolio.tsx, client-detail.tsx
+- **Current Navigation Structure**:
+  - Análisis de Cartera (Dashboard) → /
+  - Enfoque 1:1 (Client Portfolio with AI) → /clients, /clients/:id
+  - Enfoque Campaña → /recommendations
+  - ARIA Responde → /copilot
+  - Reportes → /reports
+
+### ARIA Analysis Experience (October 26, 2025)
+- **New Component: ARIAAnalysisLoader**
+  - Premium loading experience showing AI-powered client analysis
+  - 6-second animated sequence before displaying Vista 360
+  - Progressive analysis of 6 client dimensions:
+    1. Comportamiento Transaccional (Activity patterns, 847 transactions)
+    2. Perfil de Riesgo (Risk exposure, credit scoring)
+    3. Rentabilidad & Contribución (Net margin, lifetime value)
+    4. Propensión a Productos (Predictive model, cross-sell opportunities)
+    5. Ciclo de Relación (Interaction history, sentiment analysis)
+    6. Tendencias & Forecasting (AI projections, future scenarios)
+  - Visual effects:
+    - Animated particles background (30 particles with pulse animations)
+    - Gradient orbs with blur effects
+    - Progress bar with gradient and shimmer effect
+    - Real-time dimension status (pending → analyzing → complete)
+    - Color-coded icons (accent for active, green for complete, muted for pending)
+    - Animated bouncing dots during analysis
+    - Checkmarks on completion
+  - Technical details:
+    - Each dimension displays insights text when analyzing/complete
+    - Progressive status updates every ~1 second
+    - Smooth transitions between states
+    - Auto-completes and reveals Vista 360 after 6 seconds
+- **Vista 360 Integration**:
+  - Shows ARIAAnalysisLoader on every client detail page load
+  - Resets analysis state when navigating between clients
+  - Seamless transition to client data after analysis complete
+  - Creates premium, AI-powered user experience
