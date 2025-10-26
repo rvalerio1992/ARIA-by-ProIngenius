@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { User, DollarSign, Briefcase, Search } from "lucide-react";
+import { User, DollarSign, Briefcase, Search, AlertCircle, RefreshCw } from "lucide-react";
 import { Link } from "wouter";
 
 interface ClientProfile {
@@ -49,17 +49,23 @@ export default function Clients() {
   }
   
   // Fetch clients
-  const { data, isLoading, error } = useQuery<ClientsResponse>({
+  const { data, isLoading, error, refetch } = useQuery<ClientsResponse>({
     queryKey: ['/api/clients', queryParams.toString()],
     queryFn: async () => {
       const response = await fetch(`/api/clients?${queryParams.toString()}`, {
         credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+        },
       });
       if (!response.ok) {
-        throw new Error('Failed to fetch clients');
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       return response.json();
     },
+    retry: 2, // Retry failed requests twice
+    retryDelay: 1000, // Wait 1 second between retries
+    staleTime: 30000, // Consider data fresh for 30 seconds
   });
   
   // Filter by search term (client-side)
@@ -113,8 +119,33 @@ export default function Clients() {
         </div>
       ) : error ? (
         <Card className="p-8">
-          <div className="text-center text-muted-foreground">
-            Error cargando clientes. Por favor intenta nuevamente.
+          <div className="flex flex-col items-center justify-center gap-4 py-8">
+            <AlertCircle className="h-12 w-12 text-destructive" />
+            <div className="text-center space-y-2">
+              <h3 className="text-lg font-semibold">Error cargando clientes</h3>
+              <p className="text-sm text-muted-foreground max-w-md">
+                No pudimos cargar la lista de clientes. Esto puede ser debido a problemas de conexión.
+              </p>
+              {error instanceof Error && (
+                <p className="text-xs text-muted-foreground font-mono bg-muted px-3 py-1 rounded">
+                  {error.message}
+                </p>
+              )}
+            </div>
+            <div className="flex gap-2">
+              <Button 
+                onClick={() => refetch()} 
+                variant="default" 
+                className="gap-2"
+                data-testid="button-retry-clients"
+              >
+                <RefreshCw className="h-4 w-4" />
+                Reintentar
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/">Volver al Dashboard</Link>
+              </Button>
+            </div>
           </div>
         </Card>
       ) : filteredClients.length === 0 ? (
