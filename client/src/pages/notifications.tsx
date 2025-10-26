@@ -282,14 +282,15 @@ export default function Notifications() {
                         <Badge 
                           variant="outline" 
                           className={`text-xs ${getPriorityColor(notification.priority)}`}
+                          data-testid={`badge-priority-${notification.id}`}
                         >
                           {notification.priority === "high" ? "Alta" : notification.priority === "medium" ? "Media" : "Baja"}
                         </Badge>
                       </CardTitle>
-                      <CardDescription className="text-sm">
+                      <CardDescription className="text-sm" data-testid={`text-description-${notification.id}`}>
                         {notification.description}
                       </CardDescription>
-                      <p className="text-xs text-muted-foreground mt-2">
+                      <p className="text-xs text-muted-foreground mt-2" data-testid={`text-timestamp-${notification.id}`}>
                         {notification.timestamp}
                       </p>
                     </div>
@@ -323,14 +324,15 @@ export default function Notifications() {
                           <Badge 
                             variant="outline" 
                             className={`text-xs ${getPriorityColor(notification.priority)}`}
+                            data-testid={`badge-priority-${notification.id}`}
                           >
                             {notification.priority === "high" ? "Alta" : notification.priority === "medium" ? "Media" : "Baja"}
                           </Badge>
                         </CardTitle>
-                        <CardDescription className="text-sm">
+                        <CardDescription className="text-sm" data-testid={`text-description-${notification.id}`}>
                           {notification.description}
                         </CardDescription>
-                        <p className="text-xs text-muted-foreground mt-2">
+                        <p className="text-xs text-muted-foreground mt-2" data-testid={`text-timestamp-${notification.id}`}>
                           {notification.timestamp}
                         </p>
                       </div>

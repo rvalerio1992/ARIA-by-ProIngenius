@@ -25,10 +25,11 @@ This is a Premium Banking CRM platform designed for relationship managers handli
 - **Routing**: Wouter.
 - **State Management**: TanStack Query for server state.
 - **Key Features**:
-    - **Análisis de Cartera (Dashboard)**: Main dashboard with personalized welcome, key metrics (Saldos Pasivos, Saldos Activos, Contribución Neta) with YTD goal comparisons in USD. Includes "Oportunidades del día" widget and Portfolio Management metrics (Margen Financiero Promedio, % Mora >90 días).
+    - **Análisis de Cartera (Dashboard)**: ARIA-centric main dashboard with personalized welcome, 4 key metrics (Saldos Pasivos, Saldos Activos, Contribución Neta, Alta Vinculación) with YTD goal comparisons in USD. Features Financial Metrics Widget (Tasa Pasiva Ponderada 5.2%, Tasa Activa Ponderada 9.8%, Margen Financiero Promedio 4.6%, Mora >90 días 3.8%) and prominent ARIA Action Buttons directing users to AI-powered features (Enfoque 1:1 and Enfoque Campaña).
     - **Vista 360 (Client Detail View)**: Comprehensive client snapshot with relationship history, sentiment, transactional data, MCC consumption charts, card usage history, and key indicators (risk level, main bank, new products, cancellations).
     - **Enfoque Campaña**: Next Best Action (NBA+) engine with probability × value - risk scoring, aligned with dashboard goals.
     - **ARIA Responde**: Conversational AI interface querying PostgreSQL directly with GPT-4o, providing professional Spanish banking responses.
+    - **Notificaciones**: Intelligent alert system with 16 categorized notifications (Oportunidades, Riesgos, Metas, Acciones Pendientes) powered by ARIA. Features priority-based alerts and actionable insights aligned with portfolio management goals.
     - **Compliance Integration**: Real-time KYC/AML/FATCA/PEP monitoring.
     - **AI-Powered Loaders**: Premium animated analysis loaders (ARIAAnalysisLoader, ARIAPortfolioAnalysisLoader, ARIACampaignAnalysisLoader) for client details, dashboard, and campaigns, showcasing generative AI capabilities.
 
