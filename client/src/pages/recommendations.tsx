@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CampaignCard } from "@/components/campaign-card";
+import { ARIACampaignAnalysisLoader } from "@/components/aria-campaign-analysis-loader";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
@@ -7,8 +8,10 @@ import { Target, Sparkles, Bell, TrendingUp, CreditCard, Shield, Heart, Smartpho
 
 export default function Recommendations() {
   const { toast } = useToast();
+  const [showAnalysis, setShowAnalysis] = useState(true);
 
   // Campañas alineadas con metas del dashboard (Saldos Pasivos, Saldos Activos, Contribución Neta, Alta Principalidad)
+  // IMPORTANT: Must define all useState hooks before any conditional returns
   const [campaigns, setCampaigns] = useState([
     {
       id: "camp-1",
@@ -107,6 +110,24 @@ export default function Recommendations() {
       ],
     },
   ]);
+
+  // Reset analysis on mount
+  useEffect(() => {
+    setShowAnalysis(true);
+  }, []);
+
+  const handleAnalysisComplete = () => {
+    setTimeout(() => {
+      setShowAnalysis(false);
+    }, 300);
+  };
+
+  // Show ARIA analysis loader on initial load
+  if (showAnalysis) {
+    return (
+      <ARIACampaignAnalysisLoader onComplete={handleAnalysisComplete} />
+    );
+  }
 
   const handleAccept = (id: string) => {
     console.log("Campaign accepted:", id);
