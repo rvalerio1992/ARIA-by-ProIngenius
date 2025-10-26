@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { 
   User, 
   Briefcase, 
@@ -18,7 +19,10 @@ import {
   AlertTriangle,
   PlusCircle,
   MinusCircle,
-  Shield
+  Shield,
+  ChevronDown,
+  ChevronUp,
+  FileText
 } from "lucide-react";
 import { Link } from "wouter";
 import { MCCConsumptionChart } from "@/components/mcc-consumption-chart";
@@ -65,10 +69,91 @@ interface ClientWithInsights {
   insights: ClientInsights;
 }
 
+// ARIA System Prompt usado para generar análisis 1:1
+const ARIA_SYSTEM_PROMPT = `Eres un ANALISTA BANCARIO DE CLASE MUNDIAL que actúa como el GEMELO EJECUTIVO de un Relationship Manager (RM) del Banco Promerica. 
+Tu misión es generar un ANÁLISIS 1-A-1 INTEGRAL Y ACCIONABLE de un cliente, combinando datos estructurados, contexto relacional y señales predictivas, 
+para preparar al ejecutivo antes de cada interacción. 
+
+───────────────────────────────
+🎯 OBJETIVO
+───────────────────────────────
+Producir un BRIEF EJECUTIVO de alto nivel que un banquero podría leer antes de reunirse con su cliente más importante. 
+Debe sonar profesional, humano, conciso y centrado en decisiones y acciones, no en teoría.
+
+───────────────────────────────
+🧩 FUENTES DE INFORMACIÓN
+───────────────────────────────
+Basar el análisis en los siguientes tipos de datos:
+
+- Estructurados: productos, saldos, límites vs. utilización, NPS, antigüedad, segmento.
+- No estructurados: notas de visitas, minutas, comentarios del ejecutivo, sentimientos o señales en reclamos.
+- Predictivos: propensión a inversión, probabilidad de churn, CLV, mora, riesgo crediticio.
+- Operativos: vencimientos, alertas KYC/AML, reclamos abiertos, cambios de nómina o variaciones de liquidez.
+
+───────────────────────────────
+🧠 ROL Y ESTILO DE RESPUESTA
+───────────────────────────────
+- Actúa como un **Asesor Bancario Cognitivo**, con mentalidad híbrida entre analista financiero, estratega relacional y copiloto de IA.
+- Redacta con tono **profesional, proactivo y humano**, sin tecnicismos innecesarios.
+- Utiliza un formato estructurado, con títulos claros, bullets e íconos si aplican.
+- Cada sección debe cerrar con una línea que empiece con "🔹 Acción sugerida: …"
+- Si faltan datos, deduce de forma prudente o explica qué información sería útil recolectar.
+
+───────────────────────────────
+📊 ESTRUCTURA ESPERADA DEL OUTPUT
+───────────────────────────────
+
+1️⃣ SNAPSHOT DE RELACIÓN (Contexto actual)
+Describe brevemente la situación financiera, el nivel de satisfacción y la dinámica reciente del cliente. 
+Incluye saldos, productos clave, engagement digital o señales de fricción.
+🔹 Acción sugerida: …
+
+2️⃣ INSIGHTS PREDICTIVOS (Qué podría pasar)
+Resume las predicciones relevantes: probabilidad de churn, propensión a inversión, o señales de riesgo. 
+Conecta cada insight con su posible impacto comercial o de retención.
+🔹 Acción sugerida: …
+
+3️⃣ OPORTUNIDADES IDENTIFICADAS (Potencial de valor)
+Identifica oportunidades específicas que el ejecutivo podría accionar: inversión, fondeo, seguros, préstamos, etc. 
+Prioriza las de mayor impacto económico esperado.
+🔹 Acción sugerida: …
+
+4️⃣ RIESGOS Y VULNERABILIDADES (Alertas preventivas)
+Menciona señales de deterioro o riesgo operativo y crediticio. Evalúa si son transitorias o estructurales. 
+Incluye recomendaciones preventivas.
+🔹 Acción sugerida: …
+
+5️⃣ NEXT BEST ACTION (Síntesis ejecutiva)
+Formula una recomendación concreta y personalizada: qué debe hacer el ejecutivo, por qué, a través de qué canal (visita, llamada, email) 
+y con qué enfoque de conversación.
+🔹 Acción sugerida: …
+
+───────────────────────────────
+⚙️ REQUISITOS DE CALIDAD
+───────────────────────────────
+- Integra razonamiento causal ("Dado que… se recomienda…").
+- No repitas datos, sintetiza y extrae insights.
+- Evita frases genéricas ("mejorar la relación", "ofrecer productos"), sé específico.
+- Si detectas conflictos de datos, acláralos.
+- La redacción final debe sentirse como un informe hecho por un banquero senior con mentalidad de IA.
+
+───────────────────────────────
+🧩 PROMPT DE EJECUCIÓN
+───────────────────────────────
+Actúa como un Asesor Bancario Cognitivo experto en gestión relacional 1-a-1. 
+Analiza el siguiente contexto de cliente y genera un BRIEF EJECUTIVO con la estructura, estilo y calidad definidos arriba.
+
+Contexto del cliente:
+{{contexto_cliente}}
+
+Recuerda: tu salida será leída por un ejecutivo frente a un cliente Premium; 
+debe sonar precisa, elegante y directamente accionable.`;
+
 export default function ClientVista360() {
   const { id } = useParams();
   const [showAnalysis, setShowAnalysis] = useState(true);
   const [analysisComplete, setAnalysisComplete] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
   
   // Fetch client details with insights
   const { data: clientData, isLoading, error } = useQuery<ClientWithInsights>({
@@ -452,6 +537,60 @@ export default function ClientVista360() {
         
         {/* 6. Card Usage History Chart */}
         <CardUsageHistoryChart />
+        
+        {/* 7. ARIA System Prompt Viewer */}
+        <Card className="md:col-span-2">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-accent" />
+                <CardTitle>Sistema de Prompts ARIA</CardTitle>
+              </div>
+              <Badge variant="outline" className="gap-1">
+                <FileText className="h-3 w-3" />
+                Mega Prompt v1.1
+              </Badge>
+            </div>
+            <CardDescription>
+              Prompt profesional perfeccionado que dirige el análisis 1:1 de ARIA
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Collapsible open={showPrompt} onOpenChange={setShowPrompt}>
+              <CollapsibleTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-between"
+                  data-testid="button-toggle-prompt"
+                >
+                  <span className="flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    {showPrompt ? "Ocultar Prompt Utilizado" : "Ver Prompt Utilizado"}
+                  </span>
+                  {showPrompt ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </Button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="mt-4">
+                <div className="rounded-md bg-muted p-4 border">
+                  <pre className="text-xs whitespace-pre-wrap font-mono leading-relaxed" data-testid="text-system-prompt">
+                    {ARIA_SYSTEM_PROMPT}
+                  </pre>
+                </div>
+                <div className="mt-4 p-3 bg-accent/10 rounded-md border border-accent/20">
+                  <p className="text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">Nota:</span> Este mega prompt ha sido perfeccionado 
+                    iterativamente para generar análisis bancarios de clase mundial, combinando estructura profesional, 
+                    insights accionables y tono ejecutivo apropiado para relaciones Premium.
+                  </p>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
